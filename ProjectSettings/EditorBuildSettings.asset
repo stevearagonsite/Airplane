@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Downloads/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-LobbyScene.unity
+    guid: c8a9d1312a49dc8488a9b32d83d659c7
+  - enabled: 1
+    path: Assets/Downloads/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
+    guid: 98efc37d6307844488eb3e4247dde7e9
+  - enabled: 1
+    path: Assets/Scenes/MenuLobby.unity
+    guid: c74aed48979a5e54896b6d272d804fc9
+  - enabled: 1
+    path: Assets/Scenes/Level00.unity
+    guid: dc3119078fbfc0a469ecb74c45521cc9
+  - enabled: 1
+    path: Assets/Scenes/Testing.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
