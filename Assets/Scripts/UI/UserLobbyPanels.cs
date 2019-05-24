@@ -1,33 +1,35 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-using Photon.Realtime;
 using Photon.Pun;
 using TMPro;
-using System;
+
+using CustomObjects;
+using static Consts.Methods;
+
 
 public class UserLobbyPanels : MonoBehaviourPunCallbacks
 {
     [Header("Login")]
     public GameObject LoginPanel;
     public TMP_InputField PlayerNameInput;
-    public Dictionary<LobbyPanel, Action> onActivePanels = new Dictionary<LobbyPanel, Action>();
+
+    Dictionary<LobbyPanel, EventsAction> _onActivePanel = new Dictionary<LobbyPanel, EventsAction>();
 
     private void Start()
     {
-        onActivePanels.Add(LobbyPanel.Login,      delegate { });
-        onActivePanels[LobbyPanel.ListRoom] += () => { };
+        _onActivePanel.Add(LobbyPanel.Login, new EventsAction());
+        _onActivePanel[LobbyPanel.Login].Add(noob);
 
-        onActivePanels.Add(LobbyPanel.CreateRoom, delegate { });
-        onActivePanels[LobbyPanel.ListRoom] += () => { };
-    
-        onActivePanels.Add(LobbyPanel.RandomRoom, delegate { });
-        onActivePanels[LobbyPanel.ListRoom] += () => { };
+        _onActivePanel.Add(LobbyPanel.CreateRoom, new EventsAction());
+        _onActivePanel[LobbyPanel.CreateRoom].Add(noob);
 
-        onActivePanels.Add(LobbyPanel.ListRoom,   delegate { });
-        onActivePanels[LobbyPanel.ListRoom] += () => { };
+        _onActivePanel.Add(LobbyPanel.RandomRoom, new EventsAction());
+        _onActivePanel[LobbyPanel.RandomRoom].Add(noob);
+
+        _onActivePanel.Add(LobbyPanel.ListRoom, new EventsAction());
+        _onActivePanel[LobbyPanel.ListRoom].Add(noob);
     }
 
     public void OnLoginButtonClicked()
@@ -52,7 +54,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     private void SetActivePanel(LobbyPanel activePanel)
     {
-        onActivePanels[activePanel]();
+        _onActivePanel[activePanel].Execute();
     }
 }
 

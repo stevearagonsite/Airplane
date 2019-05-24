@@ -1,18 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Consts : MonoBehaviour
+namespace Consts
 {
-    // Start is called before the first frame update
-    void Start()
+    using static Consts.Methods;
+    using static Consts.References;
+
+    public static class References
     {
-        
+        public const string MY_CONST = "Test";
     }
 
-    // Update is called once per frame
-    void Update()
+    public static class Methods
     {
-        
+        public static readonly Action noob = () => { };
     }
 }
