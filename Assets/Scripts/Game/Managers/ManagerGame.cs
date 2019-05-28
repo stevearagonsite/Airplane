@@ -32,7 +32,7 @@ public class ManagerGame : MonoBehaviour
 
     private void Start()
     {
-        var initialPosition = ManagerPositions.instance.GetPosition();
+        var initialPosition = ManagerPositions.Instance.GetPosition();
         Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
         PhotonNetwork.Instantiate("Prefabs/EntityPlayer", initialPosition, rotation, 0);

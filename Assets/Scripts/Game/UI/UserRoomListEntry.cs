@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 using TMPro;
 using Photon.Pun;
+using UnityEngine.Serialization;
 
 public class UserRoomListEntry : MonoBehaviour
 {
     [Header("UI References")]
     public TextMeshProUGUI roomNameText;
-    public TextMeshProUGUI RoomPlayersText;
-    public Button JoinRoomButton;
+    public TextMeshProUGUI roomPlayersText;
+    public Button joinRoomButton;
 
     private string _roomName;
 
     public void Start()
     {
-        JoinRoomButton.onClick.AddListener(() =>
+        joinRoomButton.onClick.AddListener(() =>
         {
             if (PhotonNetwork.InLobby)
             {
@@ -33,6 +34,6 @@ public class UserRoomListEntry : MonoBehaviour
         _roomName = name;
 
         roomNameText.SetText(name);
-        RoomPlayersText.SetText($"{currentPlayers} / {maxPlayers}");
+        roomPlayersText.SetText($"{currentPlayers} / {maxPlayers}");
     }
 }

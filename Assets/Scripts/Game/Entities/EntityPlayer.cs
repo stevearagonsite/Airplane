@@ -51,7 +51,7 @@ public class EntityPlayer : Entity
         camera.transform.SetParent(gameObject.transform);
     }
 
-    public override void Execution()
+    protected override void Execution()
     {
         if (!_photonView) return;
         if (!_photonView.IsMine || !_controllable) return;
@@ -59,7 +59,7 @@ public class EntityPlayer : Entity
         //incrementalAccelerate /= 100;
     }
 
-    public override void FixedExecution()
+    protected override void FixedExecution()
     {
         if (!_photonView) return;
         if (!_photonView.IsMine || !_controllable) return;
@@ -84,21 +84,21 @@ public class EntityPlayer : Entity
 
     private void MoveVertical()
     {
-        float inputRotationV = Input.GetAxisRaw("Vertical");
+        var inputRotationV = Input.GetAxisRaw("Vertical");
         if (inputRotationV != 0)
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
 
-            Vector3 eulerAngleVelocity = (-Vector3.right * inputRotationV);
-            Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity * rotationSpeed * Time.deltaTime);
+            var eulerAngleVelocity = (-Vector3.right * inputRotationV);
+            var deltaRotation = Quaternion.Euler(eulerAngleVelocity * rotationSpeed * Time.deltaTime);
             _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
         }
     }
 
     private void MoveHorizontal()
     {
-        float inputRotationH = Input.GetAxisRaw("Horizontal");
+        var inputRotationH = Input.GetAxisRaw("Horizontal");
         if (inputRotationH != 0)
         {
             _rigidbody.velocity = Vector3.zero;

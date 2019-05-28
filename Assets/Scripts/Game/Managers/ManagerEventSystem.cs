@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ManagerEventSystem : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         VerifyAndSpawn();
     }
@@ -13,15 +13,13 @@ public class ManagerEventSystem : MonoBehaviour
     /// <summary>
     /// Prevent error that event system spawn in more of a scene.
     /// </summary>
-    private void VerifyAndSpawn()
+    private static void VerifyAndSpawn()
     {
-        EventSystem sceneEventSystem = FindObjectOfType<EventSystem>();
-        if (sceneEventSystem == null)
-        {
-            GameObject eventSystem = new GameObject("EventSystem");
+        if (FindObjectOfType<EventSystem>()) return;
+        
+        var eventSystem = new GameObject("EventSystem");
 
-            eventSystem.AddComponent<EventSystem>();
-            eventSystem.AddComponent<StandaloneInputModule>();
-        }
+        eventSystem.AddComponent<EventSystem>();
+        eventSystem.AddComponent<StandaloneInputModule>();
     }
 }

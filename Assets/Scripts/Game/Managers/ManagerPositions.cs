@@ -11,20 +11,20 @@ using Utils;
 public class ManagerPositions : MonoBehaviour
 {
     private PhotonView _photonView;
-    public static ManagerPositions instance;
-    private List<Transform> _listOfPositons = new List<Transform>();
+    public static ManagerPositions Instance;
+    private List<Transform> _listOfPositions = new List<Transform>();
     private List<Transform> _listOfAvailablePositions;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(this);
-            instance = this;
+            Instance = this;
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
@@ -32,8 +32,8 @@ public class ManagerPositions : MonoBehaviour
     {
         this._photonView = this.gameObject.GetComponent<PhotonView>();
 
-        this._listOfPositons = this.gameObject.GetComponentsInChildren<Transform>().ToList();
-        this._listOfAvailablePositions = new List<Transform>(_listOfPositons);
+        this._listOfPositions = this.gameObject.GetComponentsInChildren<Transform>().ToList();
+        this._listOfAvailablePositions = new List<Transform>(_listOfPositions);
     }
 
     public Vector3 GetPosition()

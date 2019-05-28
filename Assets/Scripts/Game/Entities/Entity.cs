@@ -15,11 +15,11 @@ public abstract class Entity : MonoBehaviour
 
     private void Awake()
     {
-        ManagerUpdate.instance.update += Execution;
-        ManagerUpdate.instance.updateFixed += FixedExecution;
+        ManagerUpdate.Instance.Execute += Execution;
+        ManagerUpdate.Instance.ExecuteFixed += FixedExecution;
     }
 
     public abstract void Move();
-    public abstract void Execution();
-    public abstract void FixedExecution();
+    protected abstract void Execution();
+    protected abstract void FixedExecution();
 }

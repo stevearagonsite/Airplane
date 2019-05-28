@@ -7,14 +7,14 @@ using TMPro;
 
 public class UserConnectionStatus : MonoBehaviour
 {
-    private readonly string connectionStatusMessage = "Connection Status:";
+    private const string ConnectionStatusMessage = "Connection Status:";
 
     [Header("UI References")]
-    public TextMeshProUGUI ConnectionStatusText;
+    public TextMeshProUGUI connectionStatusText;
 
 
     public void Update()
     {
-        ConnectionStatusText.SetText($"{connectionStatusMessage} {PhotonNetwork.NetworkClientState}");
+        connectionStatusText.SetText($"{ConnectionStatusMessage} {PhotonNetwork.NetworkClientState}");
     }
 }

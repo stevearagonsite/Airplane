@@ -69,7 +69,7 @@ public class UserPlayerListEntry : MonoBehaviour
 
     private void OnPlayerNumberingChanged()
     {
-        foreach (Player p in PhotonNetwork.PlayerList)
+        foreach (var p in PhotonNetwork.PlayerList)
         {
             if (p.ActorNumber == _ownerId)
             {

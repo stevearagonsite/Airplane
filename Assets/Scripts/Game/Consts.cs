@@ -25,6 +25,6 @@ namespace Consts
 
     public static class Methods
     {
-        public static readonly Action noob = () => { };
+        public static readonly Action Noob = () => { };
     }
 }

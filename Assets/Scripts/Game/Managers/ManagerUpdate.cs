@@ -5,46 +5,42 @@ using System;
 
 public class ManagerUpdate : MonoBehaviour {
 
-    public event Action update = delegate { };
-    public event Action updateFixed = delegate { };
-    public event Action updateLate = delegate { };
-    public static ManagerUpdate instance;
-    private bool _isPause = false;
-    public bool GetPauseState { get{return _isPause;} }
+    public static ManagerUpdate Instance;
+    public event Action Execute = delegate { };
+    public event Action ExecuteFixed = delegate { };
+    public event Action ExecuteLate = delegate { };
+
+    public bool isPause{ get; set;}
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(this);
-            instance = this;
+            Instance = this;
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
-    public void Pause(bool pauseState)
-    {
-        _isPause = pauseState;
-    }
 
     #region UPDATES
 
     private void Update()
     {
-        if (!_isPause && update != null) update();
+        if (!isPause && Execute.Equals(null)) Execute();
     }
 
     private void LateUpdate()
     {
-        if (!_isPause && updateLate != null) updateLate();
+        if (!isPause && ExecuteLate.Equals(null)) ExecuteLate();
     }
 
     private void FixedUpdate()
     {
-        if (!_isPause && updateFixed != null) updateFixed();
+        if (!isPause && !ExecuteFixed.Equals(null)) ExecuteFixed();
     }
 
     #endregion UPDATES
@@ -85,7 +81,7 @@ public class CoroutineUpdate{
     {
         while (_activeLoop)
         {
-            if (!ManagerUpdate.instance.GetPauseState)
+            if (!ManagerUpdate.Instance.isPause)
             {
                 if (activeTime)
                 {

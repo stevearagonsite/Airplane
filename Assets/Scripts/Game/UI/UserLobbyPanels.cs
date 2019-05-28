@@ -15,14 +15,14 @@ using Consts;
 
 public class UserLobbyPanels : MonoBehaviourPunCallbacks
 {
-    private const string LOGIN = "Login";
-    private const string SELECTION = "Selection";
-    private const string CREATE_ROOM = "CreateRoom";
-    private const string RANDOM_ROOM = "RandomRoom";
-    private const string LIST_ROOMS = "ListRoom";
-    private const string INSIDE_ROOM = "InsideRoom";
-    private const string PATH_INSIDE_ROOM_PLAYER = "Prefabs/PlayerRoom";
-    private const string PATH_LIST_OBJECT_ROOM = "Prefabs/ListObjectRoom";
+    private const string Login = "Login";
+    private const string Selection = "Selection";
+    private const string CreateRoom = "CreateRoom";
+    private const string RandomRoom = "RandomRoom";
+    private const string ListRooms = "ListRoom";
+    private const string InsideRoom = "InsideRoom";
+    private const string PathInsideRoomPlayer = "Prefabs/PlayerRoom";
+    private const string PathListObjectRoom = "Prefabs/ListObjectRoom";
 
     // Login
     public GameObject loginPanel;
@@ -60,42 +60,43 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
         roomListEntries = new Dictionary<string, GameObject>();
 
         inputPlayerName.text = "Player " + (int)Rand.Range(1000, 10000);
+        //loadBalancingClient.ConnectToRegionMaster("us");
     }
 
     private void Start()
     {
-        _onActivePanel.Add(LOGIN, new EventsAction());
-        _onActivePanel[LOGIN].Add(() => {
+        _onActivePanel.Add(Login, new EventsAction());
+        _onActivePanel[Login].Add(() => {
             DiableAllPanels();
             loginPanel.SetActive(true);
         });
 
-        _onActivePanel.Add(SELECTION, new EventsAction());
-        _onActivePanel[SELECTION].Add(() => {
+        _onActivePanel.Add(Selection, new EventsAction());
+        _onActivePanel[Selection].Add(() => {
             DiableAllPanels();
             selectionPanel.SetActive(true);
         });
 
-        _onActivePanel.Add(CREATE_ROOM, new EventsAction());
-        _onActivePanel[CREATE_ROOM].Add(() => {
+        _onActivePanel.Add(CreateRoom, new EventsAction());
+        _onActivePanel[CreateRoom].Add(() => {
             DiableAllPanels();
             createRoomPanel.SetActive(true);
         });
 
-        _onActivePanel.Add(RANDOM_ROOM, new EventsAction());
-        _onActivePanel[RANDOM_ROOM].Add(() => {
+        _onActivePanel.Add(RandomRoom, new EventsAction());
+        _onActivePanel[RandomRoom].Add(() => {
             DiableAllPanels();
             randomRoomPanel.SetActive(true);
         });
 
-        _onActivePanel.Add(LIST_ROOMS, new EventsAction());
-        _onActivePanel[LIST_ROOMS].Add(() => {
+        _onActivePanel.Add(ListRooms, new EventsAction());
+        _onActivePanel[ListRooms].Add(() => {
             DiableAllPanels();
             listRoomPanel.SetActive(true);
         });
 
-        _onActivePanel.Add(INSIDE_ROOM, new EventsAction());
-        _onActivePanel[INSIDE_ROOM].Add(() => {
+        _onActivePanel.Add(InsideRoom, new EventsAction());
+        _onActivePanel[InsideRoom].Add(() => {
             DiableAllPanels();
             insideRoomPanel.SetActive(true);
         });
@@ -149,10 +150,10 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     #region ROOM-LIST
     private void UpdateRoomListView()
     {
-        foreach (RoomInfo info in cachedRoomList.Values)
+        foreach (var info in cachedRoomList.Values)
         {
-            var objectToInstantiate = Resources.Load(PATH_LIST_OBJECT_ROOM);
-            GameObject entry = Instantiate((GameObject)objectToInstantiate);
+            var objectToInstantiate = Resources.Load(PathListObjectRoom);
+            var entry = Instantiate((GameObject)objectToInstantiate);
             entry.transform.SetParent(roomListContent.transform);
             entry.transform.localScale = Vector3.one;
             entry.GetComponent<UserRoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, info.MaxPlayers);
@@ -191,7 +192,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     private void ClearRoomListView()
     {
-        foreach (GameObject entry in roomListEntries.Values)
+        foreach (var entry in roomListEntries.Values)
         {
             Destroy(entry.gameObject);
         }
@@ -203,7 +204,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     #region PUN-CALLBACKS
     public override void OnConnectedToMaster()
     {
-        this.SetActivePanel(SELECTION);
+        this.SetActivePanel(Selection);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -223,12 +224,12 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        SetActivePanel(SELECTION);
+        SetActivePanel(Selection);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        SetActivePanel(SELECTION);
+        SetActivePanel(Selection);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -241,7 +242,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        SetActivePanel(INSIDE_ROOM);
+        SetActivePanel(InsideRoom);
 
         if (playerListEntries == null)
         {
@@ -250,7 +251,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
         foreach (Player p in PhotonNetwork.PlayerList)
         {
-            var objectToInstantiate = Resources.Load(PATH_INSIDE_ROOM_PLAYER);
+            var objectToInstantiate = Resources.Load(PathInsideRoomPlayer);
             GameObject entry = Instantiate((GameObject)objectToInstantiate);
             //Players canvas in gameObject
             var canvasPlayers = insideRoomPanel.transform.GetChild(0);
@@ -278,7 +279,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        SetActivePanel(SELECTION);
+        SetActivePanel(Selection);
 
         foreach (GameObject entry in playerListEntries.Values)
         {
@@ -291,7 +292,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        var objectToInstantiate = Resources.Load(PATH_INSIDE_ROOM_PLAYER);
+        var objectToInstantiate = Resources.Load(PathInsideRoomPlayer);
         GameObject entry = Instantiate((GameObject)objectToInstantiate);
         //Players canvas in gameObject
         var canvasPlayers = insideRoomPanel.transform.GetChild(0);
@@ -365,7 +366,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
             PhotonNetwork.LeaveLobby();
         }
 
-        SetActivePanel(SELECTION);
+        SetActivePanel(Selection);
     }
 
     public void OnLeaveGameButton()
@@ -390,7 +391,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public void OnRandomRoomButton()
     {
-        SetActivePanel(RANDOM_ROOM);
+        SetActivePanel(RandomRoom);
         //Execute -> OnJoinedRoom callback
         PhotonNetwork.JoinRandomRoom();
     }
@@ -403,7 +404,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
             PhotonNetwork.JoinLobby();
         }
 
-        SetActivePanel(LIST_ROOMS);
+        SetActivePanel(ListRooms);
     }
 
     public void OnStartGameButton(string scene)
