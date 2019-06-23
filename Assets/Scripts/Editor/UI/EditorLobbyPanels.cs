@@ -5,6 +5,7 @@ using TMPro;
 
 using static GenericsMethods.TextStyles;
 using static GenericsMethods.GenericsEditor;
+using UnityEngine.UI;
 
 [CustomEditor(typeof(UserLobbyPanels))]
 public class EditorLobbyPanels : InspectorEditor
@@ -54,8 +55,16 @@ public class EditorLobbyPanels : InspectorEditor
     private void FieldElements()
     {
         /** LOGIN **/
-        var playerNameInput = _userLobbyPanels.playerNameInput;
-        _userLobbyPanels.playerNameInput = (TMP_InputField)EditorGUILayout.ObjectField("TMP Username field:*", playerNameInput, typeof(TMP_InputField), true);
+        var inputPlayerName = _userLobbyPanels.inputPlayerName;
+        _userLobbyPanels.inputPlayerName = (TMP_InputField)EditorGUILayout.ObjectField("TMP Username field:*", inputPlayerName, typeof(TMP_InputField), true);
+        /** CREATE ROOM **/
+        var inputRoomName = _userLobbyPanels.inputRoomName;
+        _userLobbyPanels.inputRoomName = (TMP_InputField)EditorGUILayout.ObjectField("TMP Roomname field:*", inputRoomName, typeof(TMP_InputField), true);
+        var inputMaxPlayers = _userLobbyPanels.inputMaxPlayers;
+        _userLobbyPanels.inputMaxPlayers = (TMP_InputField)EditorGUILayout.ObjectField("TMP Max-players field:*", inputMaxPlayers, typeof(TMP_InputField), true);
+        /** INSIDE ROOM **/
+        var startGameButton = _userLobbyPanels.startGameButton;
+        _userLobbyPanels.startGameButton = (Button)EditorGUILayout.ObjectField("TMP StartGame Button:*", startGameButton, typeof(Button), true);
 
     }
 
@@ -101,6 +110,14 @@ public class EditorLobbyPanels : InspectorEditor
         _userLobbyPanels.listRoomPanel = (GameObject)EditorGUILayout.ObjectField("", _userLobbyPanels.listRoomPanel, typeof(GameObject), true);
         if (!listRoomPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
         if (listRoomPanel.activeSelf && listRoomPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
+        EditorGUILayout.Space();
+
+        /** ROOMS LIST **/
+        var insideRoomPanel = _userLobbyPanels.insideRoomPanel;
+        EditorGUILayout.LabelField("Panel-inside room*", style, GUILayout.ExpandWidth(true));
+        _userLobbyPanels.insideRoomPanel = (GameObject)EditorGUILayout.ObjectField("", _userLobbyPanels.insideRoomPanel, typeof(GameObject), true);
+        if (!insideRoomPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
+        if (insideRoomPanel.activeSelf && insideRoomPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
         EditorGUILayout.Space();
     }
 
