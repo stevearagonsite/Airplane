@@ -18,9 +18,10 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     private const string SELECTION = "Selection";
     private const string CREATE_ROOM = "CreateRoom";
     private const string RANDOM_ROOM = "RandomRoom";
-    private const string LIST_ROOM = "ListRoom";
+    private const string LIST_ROOMS = "ListRoom";
     private const string INSIDE_ROOM = "InsideRoom";
     private const string PATH_INSIDE_ROOM_PLAYER = "Prefabs/PlayerRoom";
+    private const string PATH_LIST_OBJECT_ROOM = "Prefabs/ListObjectRoom";
 
     // Login
     public GameObject loginPanel;
@@ -39,13 +40,13 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     // List Room
     public GameObject listRoomPanel;
+    public GameObject roomListContent;
 
     // Inside Room
     public GameObject insideRoomPanel;
     public Button startGameButton;
 
-    Dictionary<string, EventsAction> _onActivePanel = new Dictionary<string, EventsAction>();
-
+    private Dictionary<string, EventsAction> _onActivePanel = new Dictionary<string, EventsAction>();
     private Dictionary<string, RoomInfo> cachedRoomList;
     private Dictionary<string, GameObject> roomListEntries;
     private Dictionary<int, GameObject> playerListEntries;
@@ -86,10 +87,10 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
             randomRoomPanel.SetActive(true);
         });
 
-        _onActivePanel.Add(LIST_ROOM, new EventsAction());
-        _onActivePanel[LIST_ROOM].Add(() => {
+        _onActivePanel.Add(LIST_ROOMS, new EventsAction());
+        _onActivePanel[LIST_ROOMS].Add(() => {
             DiableAllPanels();
-            loginPanel.SetActive(true);
+            listRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(INSIDE_ROOM, new EventsAction());
@@ -110,11 +111,10 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public void SetActivePanel(string activePanel)
     {
-        Debug.Log("SetActivePanel");
         _onActivePanel[activePanel].Execute();
     }
 
-
+    #region INSIDE-ROOM
     private bool CheckPlayersReady()
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -145,39 +145,95 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     {
         startGameButton.gameObject.SetActive(CheckPlayersReady());
     }
+    #endregion INSIDE-ROOM
+
+    #region ROOM-LIST
+    private void UpdateRoomListView()
+    {
+        foreach (RoomInfo info in cachedRoomList.Values)
+        {
+            var objectToInstantiate = Resources.Load(PATH_LIST_OBJECT_ROOM);
+            GameObject entry = Instantiate((GameObject)objectToInstantiate);
+            entry.transform.SetParent(roomListContent.transform);
+            entry.transform.localScale = Vector3.one;
+            entry.GetComponent<UserRoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, info.MaxPlayers);
+
+            roomListEntries.Add(info.Name, entry);
+        }
+    }
+
+    private void UpdateCachedRoomList(List<RoomInfo> roomList)
+    {
+        foreach (RoomInfo info in roomList)
+        {
+            // Remove room from cached room list if it got closed, became invisible or was marked as removed
+            if (!info.IsOpen || !info.IsVisible || info.RemovedFromList)
+            {
+                if (cachedRoomList.ContainsKey(info.Name))
+                {
+                    cachedRoomList.Remove(info.Name);
+                }
+
+                continue;
+            }
+
+            // Update cached room info
+            if (cachedRoomList.ContainsKey(info.Name))
+            {
+                cachedRoomList[info.Name] = info;
+            }
+            // Add new room info to cache
+            else
+            {
+                cachedRoomList.Add(info.Name, info);
+            }
+        }
+    }
+
+    private void ClearRoomListView()
+    {
+        foreach (GameObject entry in roomListEntries.Values)
+        {
+            Destroy(entry.gameObject);
+        }
+
+        roomListEntries.Clear();
+    }
+    #endregion ROOM-LIST
 
     #region PUN-CALLBACKS
     public override void OnConnectedToMaster()
     {
-        Debug.Log("OnConnectedToMaster");
         this.SetActivePanel(SELECTION);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log("OnRoomListUpdate");
+        ClearRoomListView();
+
+        UpdateCachedRoomList(roomList);
+        UpdateRoomListView();
     }
 
     public override void OnLeftLobby()
     {
-        Debug.Log("OnLeftLobby");
+        cachedRoomList.Clear();
+
+        ClearRoomListView();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("OnCreateRoomFailed");
         SetActivePanel(SELECTION);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.Log("OnJoinRoomFailed");
         SetActivePanel(SELECTION);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("OnJoinRandomFailed");
         string roomName = "Room " + Rand.Range(1000, 10000);
 
         RoomOptions options = new RoomOptions { MaxPlayers = 8 };
@@ -196,7 +252,6 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
         foreach (Player p in PhotonNetwork.PlayerList)
         {
             var objectToInstantiate = Resources.Load(PATH_INSIDE_ROOM_PLAYER);
-            Debug.Log(objectToInstantiate);
             GameObject entry = Instantiate((GameObject)objectToInstantiate);
             //Players canvas in gameObject
             var canvasPlayers = insideRoomPanel.transform.GetChild(0);
@@ -237,22 +292,53 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("OnPlayerEnteredRoom");
+        var objectToInstantiate = Resources.Load(PATH_INSIDE_ROOM_PLAYER);
+        GameObject entry = Instantiate((GameObject)objectToInstantiate);
+        //Players canvas in gameObject
+        var canvasPlayers = insideRoomPanel.transform.GetChild(0);
+        entry.transform.SetParent(canvasPlayers.transform);
+        entry.transform.localScale = Vector3.one;
+        entry.GetComponent<UserPlayerListEntry>().Initialize(newPlayer.ActorNumber, newPlayer.NickName);
+
+        playerListEntries.Add(newPlayer.ActorNumber, entry);
+
+        startGameButton.gameObject.SetActive(CheckPlayersReady());
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        Debug.Log("OnPlayerLeftRoom");
+        Destroy(playerListEntries[otherPlayer.ActorNumber].gameObject);
+        playerListEntries.Remove(otherPlayer.ActorNumber);
+
+        startGameButton.gameObject.SetActive(CheckPlayersReady());
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
-        Debug.Log("OnMasterClientSwitched");
+        if (PhotonNetwork.LocalPlayer.ActorNumber == newMasterClient.ActorNumber)
+        {
+            startGameButton.gameObject.SetActive(CheckPlayersReady());
+        }
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
-        Debug.Log("OnPlayerPropertiesUpdate");
+        if (playerListEntries == null)
+        {
+            playerListEntries = new Dictionary<int, GameObject>();
+        }
+
+        GameObject entry;
+        if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
+        {
+            object isPlayerReady;
+            if (changedProps.TryGetValue(UserGame.PLAYER_READY, out isPlayerReady))
+            {
+                entry.GetComponent<UserPlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
+            }
+        }
+
+        startGameButton.gameObject.SetActive(CheckPlayersReady());
     }
     #endregion PUN-CALLBACKS
 
@@ -301,6 +387,23 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
         RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers };
         //Execute -> OnJoinedRoom callback
         PhotonNetwork.CreateRoom(roomName, options, null);
+    }
+
+    public void OnRandomRoomButton()
+    {
+        SetActivePanel(RANDOM_ROOM);
+
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    public void OnRoomListButton()
+    {
+        if (!PhotonNetwork.InLobby)
+        {
+            PhotonNetwork.JoinLobby();
+        }
+
+        SetActivePanel(LIST_ROOMS);
     }
     #endregion UI
 }
