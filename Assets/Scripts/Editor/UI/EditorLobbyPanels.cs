@@ -57,14 +57,17 @@ public class EditorLobbyPanels : InspectorEditor
         /** LOGIN **/
         var inputPlayerName = _userLobbyPanels.inputPlayerName;
         _userLobbyPanels.inputPlayerName = (TMP_InputField)EditorGUILayout.ObjectField("TMP Username field:*", inputPlayerName, typeof(TMP_InputField), true);
+
         /** CREATE ROOM **/
         var inputRoomName = _userLobbyPanels.inputRoomName;
         _userLobbyPanels.inputRoomName = (TMP_InputField)EditorGUILayout.ObjectField("TMP Roomname field:*", inputRoomName, typeof(TMP_InputField), true);
         var inputMaxPlayers = _userLobbyPanels.inputMaxPlayers;
         _userLobbyPanels.inputMaxPlayers = (TMP_InputField)EditorGUILayout.ObjectField("TMP Max-players field:*", inputMaxPlayers, typeof(TMP_InputField), true);
+
         /** LIST ROOM **/
         var roomListContent = _userLobbyPanels.roomListContent;
         _userLobbyPanels.roomListContent = (GameObject)EditorGUILayout.ObjectField("TMP RoomList-content GameObject:*", roomListContent, typeof(GameObject), true);
+
         /** INSIDE ROOM **/
         var startGameButton = _userLobbyPanels.startGameButton;
         _userLobbyPanels.startGameButton = (Button)EditorGUILayout.ObjectField("TMP StartGame Button:*", startGameButton, typeof(Button), true);

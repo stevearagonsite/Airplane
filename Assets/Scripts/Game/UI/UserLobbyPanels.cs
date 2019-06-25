@@ -12,6 +12,7 @@ using CustomObjects;
 using Utils;
 using Consts;
 
+
 public class UserLobbyPanels : MonoBehaviourPunCallbacks
 {
     private const string LOGIN = "Login";
@@ -392,7 +393,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     public void OnRandomRoomButton()
     {
         SetActivePanel(RANDOM_ROOM);
-
+        //Execute ->  callback
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -400,10 +401,19 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.InLobby)
         {
+            //Execute ->  callback
             PhotonNetwork.JoinLobby();
         }
 
         SetActivePanel(LIST_ROOMS);
+    }
+
+    public void OnStartGameButton(string scene)
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+
+        PhotonNetwork.LoadLevel(scene);
     }
     #endregion UI
 }

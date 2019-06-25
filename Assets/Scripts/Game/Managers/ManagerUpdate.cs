@@ -14,7 +14,6 @@ public class ManagerUpdate : MonoBehaviour {
 
     private void Awake()
     {
-        //Singleton
         if (instance != null)
         {
             Destroy(this);
