@@ -5,6 +5,7 @@ using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 using TMPro;
+
 using Photon.Pun;
 using Consts;
 
@@ -24,7 +25,6 @@ public class UserPlayerListEntry : MonoBehaviour
     {
         PlayerNumbering.OnPlayerNumberingChanged += OnPlayerNumberingChanged;
     }
-
 
     public void Start()
     {

@@ -59,7 +59,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
         cachedRoomList = new Dictionary<string, RoomInfo>();
         roomListEntries = new Dictionary<string, GameObject>();
 
-        inputPlayerName.text = "Player " + Rand.Range(1000, 10000);
+        inputPlayerName.text = "Player " + (int)Rand.Range(1000, 10000);
     }
 
     private void Start()
@@ -108,6 +108,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
         createRoomPanel.SetActive(false);
         randomRoomPanel.SetActive(false);
         listRoomPanel.SetActive(false);
+        insideRoomPanel.SetActive(false);
     }
 
     public void SetActivePanel(string activePanel)
@@ -118,10 +119,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     #region INSIDE-ROOM
     private bool CheckPlayersReady()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return false;
-        }
+        if (!PhotonNetwork.IsMasterClient || PhotonNetwork.PlayerList.Length < 2) return false;
 
         foreach (Player p in PhotonNetwork.PlayerList)
         {
@@ -235,7 +233,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        string roomName = "Room " + Rand.Range(1000, 10000);
+        string roomName = "Room " + (int)Rand.Range(1000, 10000);
 
         RoomOptions options = new RoomOptions { MaxPlayers = 8 };
         PhotonNetwork.CreateRoom(roomName, options, null);
@@ -379,7 +377,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     public void OnCreateRoomButton()
     {
         string roomName = inputRoomName.text;
-        roomName = (roomName.Equals(string.Empty)) ? "Room " + Rand.Range(1000, 10000) : roomName;
+        roomName = (roomName.Equals(string.Empty)) ? "Room " + (int)Rand.Range(1000, 10000) : roomName;
 
         byte maxPlayers;
         byte.TryParse(inputMaxPlayers.text, out maxPlayers);
@@ -393,7 +391,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     public void OnRandomRoomButton()
     {
         SetActivePanel(RANDOM_ROOM);
-        //Execute ->  callback
+        //Execute -> OnJoinedRoom callback
         PhotonNetwork.JoinRandomRoom();
     }
 

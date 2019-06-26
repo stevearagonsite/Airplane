@@ -16,6 +16,7 @@ public class ManagerGame : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         _playerListEntries = new Dictionary<int, GameObject>();
 
         foreach (Player p in PhotonNetwork.PlayerList)
@@ -31,9 +32,9 @@ public class ManagerGame : MonoBehaviour
 
     private void Start()
     {
-        Vector3 position = new Vector3(0.0f, 10f, 0.0f);
+        var initialPosition = ManagerPositions.instance.GetPosition();
         Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-        PhotonNetwork.Instantiate("Prefabs/EntityPlayer", position, rotation, 0);
+        PhotonNetwork.Instantiate("Prefabs/EntityPlayer", initialPosition, rotation, 0);
     }
 }

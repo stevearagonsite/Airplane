@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Utils
 {
@@ -19,5 +20,14 @@ namespace Utils
 
             return uniform * (maxValue - minValue);
         };
+    }
+    
+    public static class ParserData
+    {
+        public static int ConvertStringToInt(string intString)
+        {
+            int i = 0;
+            return (Int32.TryParse(intString, out i) ? i : -1);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Photon.Pun.UtilityScripts;
 using ExitGames.Client.Photon;
@@ -8,29 +9,46 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Consts;
 using Utils;
 using System.Collections;
+using System;
 
 public class EntityPlayer : Entity
 {
-    public float rotationSpeed = 90.0f;
-    public float movementSpeed = 2.0f;
-    public float maxSpeed = 0.2f;
+    public float rotationSpeed = 0.0003f;
+    public float maxSpeed = 20f;
+    private float incrementalAccelerate = 3f;
+
+    public Transform lookAt;
 
     private Rigidbody _rigidbody;
     private Renderer _renderer;
     private Collider _collider;
 
-    private float _rotation = 0.0f;
-    private float _acceleration = 0.0f;
+    private float _mommentSpeed = 0.0f;
+    private float _rotationHorizontal = 0.0f;
+    private float _rotationVertical = 0.0f;
+    private Text _text;
 
     private bool _isAccelerating = false;
     private bool _controllable = true;
 
     private void Start()
     {
-        this._photonView = this.gameObject.GetComponent<PhotonView>();
-        this._rigidbody = this.gameObject.GetComponent<Rigidbody>();
-        Debug.Log(_photonView);
-        Debug.Log(_rigidbody);
+        _photonView = gameObject.GetComponent<PhotonView>();
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
+
+        InitialOperationsOwner();
+    }
+
+    private void InitialOperationsOwner()
+    {
+        if (!_photonView.IsMine) return;
+
+        _text = FindObjectOfType<Text>();
+        var camera = FindObjectOfType<Camera>();
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y + 1.3f, transform.position.z - 3.8f);
+        camera.transform.rotation = transform.rotation;
+        camera.transform.LookAt(lookAt);
+        camera.transform.SetParent(gameObject.transform);
     }
 
     public override void Execution()
@@ -38,9 +56,7 @@ public class EntityPlayer : Entity
         if (!_photonView) return;
         if (!_photonView.IsMine || !_controllable) return;
 
-        _rotation = Input.GetAxisRaw("Horizontal");
-        _acceleration = Input.GetAxisRaw("Vertical");
-        Input.GetButtonDown("Jump");
+        //incrementalAccelerate /= 100;
     }
 
     public override void FixedExecution()
@@ -53,13 +69,65 @@ public class EntityPlayer : Entity
 
     public override void Move()
     {
-        transform.position += (transform.right * _rotation) * movementSpeed * Time.deltaTime;
-        transform.position += (transform.forward * _acceleration) * movementSpeed * Time.deltaTime;
+        _text.text = "VALUES DEBUG!";
+        Grabity();
+        MoveVertical();
+        MoveHorizontal();
+        MoveForward();
+    }
 
+    private void Grabity()
+    {
+        var factor = (Vector3.up * 9.8f * _rigidbody.mass) / 2000;
+        _rigidbody.MovePosition(transform.position - factor * Time.deltaTime);
+    }
+
+    private void MoveVertical()
+    {
+        float inputRotationV = Input.GetAxisRaw("Vertical");
+        if (inputRotationV != 0)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+
+            Vector3 eulerAngleVelocity = (-Vector3.right * inputRotationV);
+            Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity * rotationSpeed * Time.deltaTime);
+            _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
+        }
+    }
+
+    private void MoveHorizontal()
+    {
+        float inputRotationH = Input.GetAxisRaw("Horizontal");
+        if (inputRotationH != 0)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+
+            Vector3 eulerAngleVelocity = (transform.up * inputRotationH);
+            Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity * rotationSpeed * Time.deltaTime);
+            _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
+        }
+    }
+
+    private void MoveForward()
+    {
+        _isAccelerating = Input.GetKey(KeyCode.Space);
         if (_isAccelerating)
         {
-            //photonView.RPC("Fire", RpcTarget.AllViaServer, rigidbody.position, rigidbody.rotation);
+            _mommentSpeed = (_mommentSpeed < maxSpeed) ? _mommentSpeed + incrementalAccelerate * Time.deltaTime : maxSpeed;
+            _text.text += "incremental" + "\n";
+            _text.text += "IncrementalValues: " + _mommentSpeed + "\n";
         }
+        else
+        {
+            var decreaseValue = incrementalAccelerate / 2;
+            _mommentSpeed = (_mommentSpeed > 0) ? _mommentSpeed - decreaseValue * Time.deltaTime : 0;
+            _text.text += "decreases" + "\n";
+            _text.text += "IncrementalValues: " + _mommentSpeed + "\n";
+        }
+
+        _rigidbody.velocity = transform.forward * _mommentSpeed;
     }
 
     private IEnumerator WaitForRespawn()
