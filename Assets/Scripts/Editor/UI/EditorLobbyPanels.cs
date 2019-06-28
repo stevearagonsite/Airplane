@@ -3,8 +3,8 @@ using UnityEngine;
 
 using TMPro;
 
-using static GenericsMethods.TextStyles;
-using static GenericsMethods.GenericsEditor;
+using static EditorGenerics.TextStyles;
+using static EditorGenerics.GenericsEditor;
 using UnityEngine.UI;
 
 [CustomEditor(typeof(UserLobbyPanels))]

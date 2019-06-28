@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-using static GenericsMethods.TextStyles;
+using static EditorGenerics.TextStyles;
 
 public abstract class InspectorEditor : Editor
 {

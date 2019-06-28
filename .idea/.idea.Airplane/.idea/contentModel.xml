@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/Library/Caches/Rider2018.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2018.3/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_Airplane.1888653765.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\Users\steve\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\steve\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Airplane.-1891155160.00" t="ExcludeRecursive" />
+    <e p="C:\Users\steve\OneDrive\Documents\Workspace\Unity\Airplane" t="IncludeRecursive">
       <e p="Airplane.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -460,7 +460,6 @@
           </e>
         </e>
       </e>
-      <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PhotonChat.csproj" t="IncludeRecursive" />
@@ -471,9 +470,7 @@
       <e p="PhotonUnityNetworking.Utilities.Culling.Editor.csproj" t="IncludeRecursive" />
       <e p="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj" t="IncludeRecursive" />
       <e p="PhotonWebSocket.csproj" t="IncludeRecursive" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>
