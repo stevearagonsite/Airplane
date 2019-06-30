@@ -44,15 +44,6 @@ public class ManagerPositions : MonoBehaviour
 
         return dst.position;
     }
-    public Vector3 GetRandomPosition()
-    {
-        var positionsCount = _listOfAvailablePositions.Count;
-        var dstPositionIndex = (int)Rand.Range(1, positionsCount - 1);
-        var dst = _listOfAvailablePositions[dstPositionIndex];
-
-        _photonView.RPC("RemoveAvailablePositionByIndex", RpcTarget.AllViaServer, dstPositionIndex);
-        return dst.position;
-    }
 
     [PunRPC]
     public void RemoveAvailablePositionByIndex(int index)

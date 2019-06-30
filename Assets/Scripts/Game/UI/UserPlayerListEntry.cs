@@ -69,12 +69,15 @@ public class UserPlayerListEntry : MonoBehaviour
 
     private void OnPlayerNumberingChanged()
     {
-        foreach (var p in PhotonNetwork.PlayerList)
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
+            var p = PhotonNetwork.PlayerList[i];
             if (p.ActorNumber == _ownerId)
             {
-                //Personalize the player with a color.
-                //playerColorImage.color = Color.random(p.GetPlayerNumber());
+                Hashtable props = new Hashtable() {
+                    { UserGame.PLAYER_ENTRY, i }
+                };
+                p.SetCustomProperties(props);
             }
         }
     }
