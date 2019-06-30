@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ using Photon.Pun;
 
 using Consts;
 using Utils;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class ManagerGame : MonoBehaviour
 {
@@ -19,21 +21,31 @@ public class ManagerGame : MonoBehaviour
         Application.targetFrameRate = 60;
         _playerListEntries = new Dictionary<int, GameObject>();
 
-        foreach (Player p in PhotonNetwork.PlayerList)
-        {
-            //GameObject entry = Instantiate(PlayerOverviewEntryPrefab);
-            //entry.transform.SetParent(gameObject.transform);
-            //entry.transform.localScale = Vector3.one;
-            //entry.GetComponent<Text>().text = string.Format("{0}\nScore: {1}\nLives: {2}", p.NickName, p.GetScore(), UserGame.PLAYER_MAX_LIVES);
+        //InfoText.text = "Waiting for other players...";
 
-            //playerListEntries.Add(p.ActorNumber, entry);
-        }
+        Hashtable props = new Hashtable
+        {
+            {UserGame.PLAYER_LOADED_LEVEL, true}
+        };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
     }
 
     private void Start()
     {
-        var initialPosition = ManagerPositions.Instance.GetPosition();
-        Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        StartCoroutine(InitialTimeToStart());
+    }
+
+    private IEnumerator InitialTimeToStart()
+    {
+        yield return new WaitForSeconds(3);
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        var index = Math.Abs(PhotonNetwork.LocalPlayer.GetPlayerNumber());
+        var initialPosition = ManagerPositions.Instance.GetPosition(index);
+        var rotation = Quaternion.Euler(ManagerPositions.Instance.transform.forward);
 
         PhotonNetwork.Instantiate("Prefabs/EntityPlayer", initialPosition, rotation, 0);
     }

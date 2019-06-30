@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace GenericsMethods
+namespace EditorGenerics
 {
     public static class GenericsEditor
     {
         public static void Spaces(int value)
         {
-            for (int i = 0; i < value; i++)
+            for (var i = 0; i < value; i++)
             {
                 EditorGUILayout.Space();
             }

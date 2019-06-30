@@ -6935,7 +6935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929efe8292c188b408801b1ec11912fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectionStatusText: {fileID: 377185929}
+  connectionStatusText: {fileID: 377185929}
 --- !u!1 &2113499998
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ namespace CustomObjects
 
         }
 
-        public EventsAction(List<Action> initalsActions)
+        public EventsAction(List<Action> initialsActions)
         {
 
         }
