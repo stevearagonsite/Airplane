@@ -77,15 +77,16 @@ public class CameraControl : MonoBehaviour
     void TrackingCamera()
     {
         //Smoot position
-        var positionB = target.position - (target.forward * _currentOffSet.z) - (target.right * _currentOffSet.x) +
-                        (target.up * _currentOffSet.y);
+        var forwardP = target.forward * _currentOffSet.z;
+        var rightP = target.right * _currentOffSet.x;
+        var topP = target.up * _currentOffSet.y;
+        var positionB = target.position - forwardP - rightP + topP;
         transform.position = Vector3.Slerp(transform.position, positionB, Time.deltaTime * speedPosition);
 
         //Smoot direction
         var targetRotation = Quaternion.LookRotation(target.position - transform.position, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speedRotation);
     }
-
 
     #region ZollyView
 
@@ -134,7 +135,6 @@ public class CameraControl : MonoBehaviour
     }
 
     #endregion ZollyView
-
     void OnDrawGizmos()
     {
         Gizmos.color = _wallDetection ? Color.green : Color.yellow;
