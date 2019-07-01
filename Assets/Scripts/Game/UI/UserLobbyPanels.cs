@@ -67,42 +67,42 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     {
         _onActivePanel.Add(Login, new EventsAction());
         _onActivePanel[Login].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             loginPanel.SetActive(true);
         });
 
         _onActivePanel.Add(Selection, new EventsAction());
         _onActivePanel[Selection].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             selectionPanel.SetActive(true);
         });
 
         _onActivePanel.Add(CreateRoom, new EventsAction());
         _onActivePanel[CreateRoom].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             createRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(RandomRoom, new EventsAction());
         _onActivePanel[RandomRoom].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             randomRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(ListRooms, new EventsAction());
         _onActivePanel[ListRooms].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             listRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(InsideRoom, new EventsAction());
         _onActivePanel[InsideRoom].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             insideRoomPanel.SetActive(true);
         });
     }
 
-    private void DiableAllPanels()
+    private void DisableAllPanels()
     {
         loginPanel.SetActive(false);
         selectionPanel.SetActive(false);
@@ -120,7 +120,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     #region INSIDE-ROOM
     private bool CheckPlayersReady()
     {
-        if (!PhotonNetwork.IsMasterClient || PhotonNetwork.PlayerList.Length < 2) return false;
+        if (!PhotonNetwork.IsMasterClient /*|| PhotonNetwork.PlayerList.Length < 2*/) return false;
 
         foreach (Player p in PhotonNetwork.PlayerList)
         {

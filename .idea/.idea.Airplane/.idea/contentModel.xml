@@ -9,6 +9,33 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Downloads" t="Include">
+          <e p="CrystalGlass" t="Include">
+            <e p="readme.txt" t="Include" />
+            <e p="Script" t="Include">
+              <e p="Demo.cs" t="Include" />
+              <e p="FreeCamera.cs" t="Include" />
+              <e p="Glass1.cs" t="Include" />
+              <e p="Glass2.cs" t="Include" />
+              <e p="Rotation.cs" t="Include" />
+              <e p="ScreenSnapshot.cs" t="Include" />
+            </e>
+            <e p="Shader" t="Include">
+              <e p="Blur.shader" t="Include" />
+              <e p="CrystalGlass.cginc" t="Include" />
+              <e p="CrystalGlassDoublePassTransparency.shader" t="Include" />
+              <e p="CrystalGlassOpacity.shader" t="Include" />
+              <e p="CrystalGlassSinglePassTransparency.shader" t="Include" />
+              <e p="RainbowCrystalGlass.shader" t="Include" />
+              <e p="Refraction" t="Include">
+                <e p="CGR Mesh Alpha.shader" t="Include" />
+                <e p="CGR Mesh.shader" t="Include" />
+                <e p="CGR Skybox.shader" t="Include" />
+              </e>
+              <e p="ScreenSpace" t="Include">
+                <e p="Transparent.shader" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Photon" t="Include">
             <e p="PhotonChat" t="Include">
               <e p="Code" t="Include">
@@ -350,6 +377,8 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AsyncMenu.cs" t="Include" />
+          <e p="CameraControl.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="Abstracts" t="Include">
               <e p="InspectorEditor.cs" t="Include" />
@@ -368,20 +397,36 @@
             <e p="Consts.cs" t="Include" />
             <e p="Entities" t="Include">
               <e p="Entity.cs" t="Include" />
-              <e p="EntityPlayer.cs" t="Include" />
+              <e p="Player" t="Include">
+                <e p="EntityPlayer.cs" t="Include" />
+                <e p="TerrainChecker.cs" t="Include" />
+              </e>
             </e>
             <e p="Generics" t="Include">
               <e p="CustomObjects.cs" t="Include" />
+              <e p="LINQExtension.cs" t="Include" />
+              <e p="Pool.cs" t="Include" />
+              <e p="PoolObject.cs" t="Include" />
             </e>
+            <e p="Interfaces" t="Include">
+              <e p="IObservableTimer.cs" t="Include" />
+              <e p="IObserverTimer.cs" t="Include" />
+            </e>
+            <e p="LookAt.cs" t="Include" />
             <e p="Managers" t="Include">
               <e p="ManagerEventSystem.cs" t="Include" />
               <e p="ManagerGame.cs" t="Include" />
               <e p="ManagerPositions.cs" t="Include" />
               <e p="ManagerUpdate.cs" t="Include" />
             </e>
+            <e p="RotationObject.cs" t="Include" />
+            <e p="Timers" t="Include">
+              <e p="CountdownTimer.cs" t="Include" />
+              <e p="RespawnTimer.cs" t="Include" />
+              <e p="Timer.cs" t="Include" />
+            </e>
             <e p="UI" t="Include">
               <e p="UserConnectionStatus.cs" t="Include" />
-              <e p="UserCountDownTimer.cs" t="Include" />
               <e p="UserLobbyPanels.cs" t="Include" />
               <e p="UserPlayerListEntry.cs" t="Include" />
               <e p="UserRoomListEntry.cs" t="Include" />
