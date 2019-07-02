@@ -23,11 +23,25 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     private const string PathExplotion = "Prefabs/WFXMR_Nuke";
 
     public float rotationSpeed = 90f;
+    public float horizontalMaxSpeed = 90f;
+    public float verticalMaxSpeed = 90f;
+    public float forwardMaxSpeed = 90f;
     public float maxSpeed = 40f;
     public float incrementalAccelerate = 6f;
+    public float incrementalRotationVerticalAccelerate = 6f;
+    public float incrementalRorationHorizontalAccelerate = 6f;
+    public float incrementalRorationForwardAccelerate = 6f;
+    
+    public GameObject trailControl;
 
     private float _mommentSpeed = 0.0f;
+    private float _mommentRotationVercialSpeed = 0.0f;
+    private float _mommentRotationHorizontalSpeed = 0.0f;
+    private float _mommentRotationForwardSpeed = 0.0f;
     private bool _isAccelerating = false;
+    private bool _isAcceleratingRotationHorizontal = false;
+    private bool _isAcceleratingRotationVertical = false;
+    private bool _isAcceleratingRotationForward = false;
     private bool _controllable = true;
     private float _timeGrabity = 0;
 
@@ -44,11 +58,11 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 
 
     // Memento pattern
-    private Caretaker<Memento<Tuple<Vector3, Quaternion>>> caretaker = new Caretaker<Memento<Tuple<Vector3, Quaternion>>>(3);
+    private Caretaker<Memento<Tuple<Vector3, Quaternion>>> caretaker = new Caretaker<Memento<Tuple<Vector3, Quaternion>>>(6);
 
     private Originator<Tuple<Vector3, Quaternion>> originator = new Originator<Tuple<Vector3, Quaternion>>();
     private int currentArticle = 0;
-    private const float TimeToSaveState = 3;
+    private const float TimeToSaveState = 0.5f;
     private float _currentTimeToSaveState;
 
     private void Start()
@@ -137,11 +151,11 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         MoveForward();
         Grabity();
         SaveState();
+        RotationForward();
         
         if (_mommentSpeed > 35)
         {
             if (!_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
-            //RotationForward();
         }
         else
         {
@@ -260,7 +274,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         _rigidbody.velocity = transform.forward * _mommentSpeed;
     }
 
-    /*private void RotationForward()
+    private void RotationForward()
     {
         var inputRotationH = Input.GetAxisRaw(ControllerRotation);
         //_animator.SetFloat(AnimatorHorizontalMove, inputRotationH);
@@ -273,14 +287,14 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         {
             //_animator.SetBool(AnimatorIdleHorizontalMove, true);
         }
-    }*/
+    }
 
-    /*private void MommentRotationForward(float input)
+    private void MommentRotationForward(float input)
     {
         var eulerAngleVelocity = transform.forward * input;
         var deltaRotation = Quaternion.Euler(eulerAngleVelocity * ((rotationSpeed / 2)  * Time.deltaTime));
         _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
-    }*/
+    }
 
     private void OnCollisionEnter(Collision c)
     {
@@ -290,14 +304,17 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
             var force = Vector3.Magnitude(c.impulse); //Force crash
             if (force > UserGame.PLAYER_FORCE_TO_EXPLOTION)
             {
+                trailControl.SetActive(false);
                 PhotonNetwork.Instantiate(PathExplotion, transform.position, transform.rotation);
                 var savedData = LastDo();
                 
                 _rigidbody.velocity = Vector3.zero;
                 _rigidbody.angularVelocity = Vector3.zero;
+                
                 _mommentSpeed = 5;
                 transform.position = savedData.Item1;
                 transform.rotation = savedData.Item2;
+                trailControl.SetActive(true);
             }
         }
     }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    private const string ControllerForward = "Forward";
+    private const string ControllerVertical = "Vertical";
+    private const string ControllerHorizontal = "Horizontal";
+    private const string ControllerRotation = "Rotation";
+    
     // Start is called before the first frame update
     void Start()
     {
