@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 using TMPro;
@@ -66,12 +67,15 @@ public class EditorLobbyPanels : InspectorEditor
 
         /** LIST ROOM **/
         var roomListContent = _userLobbyPanels.roomListContent;
-        _userLobbyPanels.roomListContent = (GameObject)EditorGUILayout.ObjectField("TMP RoomList-content GameObject:*", roomListContent, typeof(GameObject), true);
+        _userLobbyPanels.roomListContent = (GameObject)EditorGUILayout.ObjectField("TMP RoomList-content:*", roomListContent, typeof(GameObject), true);
 
         /** INSIDE ROOM **/
         var startGameButton = _userLobbyPanels.startGameButton;
         _userLobbyPanels.startGameButton = (Button)EditorGUILayout.ObjectField("TMP StartGame Button:*", startGameButton, typeof(Button), true);
 
+        /** LOADING **/
+        var progress = _userLobbyPanels.progress;
+        _userLobbyPanels.progress = (UserProgress)EditorGUILayout.ObjectField("Progress:*", progress, typeof(UserProgress), true);
     }
 
     private void FieldPanels()
@@ -117,13 +121,37 @@ public class EditorLobbyPanels : InspectorEditor
         if (!listRoomPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
         if (listRoomPanel.activeSelf && listRoomPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
         EditorGUILayout.Space();
+        
+        /** HOW TO PLAY**/
+        var howToPlayPanel = _userLobbyPanels.howToPlayPanel;
+        EditorGUILayout.LabelField("How-to-play*", style, GUILayout.ExpandWidth(true));
+        _userLobbyPanels.howToPlayPanel = (GameObject)EditorGUILayout.ObjectField("", _userLobbyPanels.howToPlayPanel, typeof(GameObject), true);
+        if (!howToPlayPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
+        if (howToPlayPanel.activeSelf && howToPlayPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
+        EditorGUILayout.Space();
+        
+        /** CREDITS**/
+        var creditsPanel = _userLobbyPanels.creditsPanel;
+        EditorGUILayout.LabelField("Credits*", style, GUILayout.ExpandWidth(true));
+        _userLobbyPanels.creditsPanel = (GameObject)EditorGUILayout.ObjectField("", _userLobbyPanels.creditsPanel, typeof(GameObject), true);
+        if (!creditsPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
+        if (creditsPanel.activeSelf && creditsPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
+        EditorGUILayout.Space();
 
-        /** ROOMS LIST **/
+        /** INSIDE ROOM **/
         var insideRoomPanel = _userLobbyPanels.insideRoomPanel;
         EditorGUILayout.LabelField("Panel-inside room*", style, GUILayout.ExpandWidth(true));
         _userLobbyPanels.insideRoomPanel = (GameObject)EditorGUILayout.ObjectField("", _userLobbyPanels.insideRoomPanel, typeof(GameObject), true);
         if (!insideRoomPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
         if (insideRoomPanel.activeSelf && insideRoomPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
+        EditorGUILayout.Space();
+        
+        /** LOADING ROOM **/
+        var loadingPanel = _userLobbyPanels.LoadingPanel;
+        EditorGUILayout.LabelField("Loading*", style, GUILayout.ExpandWidth(true));
+        _userLobbyPanels.LoadingPanel = (GameObject)EditorGUILayout.ObjectField("", _userLobbyPanels.LoadingPanel, typeof(GameObject), true);
+        if (!loadingPanel) EditorGUILayout.HelpBox(_ERROR_OBJECT_NULL, MessageType.Error);
+        if (loadingPanel.activeSelf && loadingPanel) EditorGUILayout.HelpBox(_WARNING_OBJECT_TO_DISABLE, MessageType.Warning);
         EditorGUILayout.Space();
     }
 

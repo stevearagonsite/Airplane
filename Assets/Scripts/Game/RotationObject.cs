@@ -6,11 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Transform))]
 public class RotationObject : MonoBehaviour {
 
-    [Range(-100,100)]
-    public float rotationSpeed;
-
-    [Range(0, 1)]
-    public float x,y,z;
+    [Range(-100,100)] public float rotationSpeed;
+    [Range(0, 1)] public float x,y,z;
 
     private void Start()
     {

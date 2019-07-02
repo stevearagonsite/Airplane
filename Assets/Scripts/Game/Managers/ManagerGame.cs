@@ -15,6 +15,7 @@ public class ManagerGame : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        PhotonNetwork.SendRate = 60;
     }
 
     private void Start()

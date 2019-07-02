@@ -17,6 +17,7 @@ public class EntityPlayer : Entity
     private const string AnimatorIdleVerticalMove = "IdleVerticalMove";
     private const string ControllerVertical = "Vertical";
     private const string ControllerHorizontal = "Horizontal";
+    private const string ControllerRotation = "Rotation";
 
     public float rotationSpeed = 90f;
     public float maxSpeed = 40f;
@@ -34,6 +35,9 @@ public class EntityPlayer : Entity
     private Animator _animator;
     private TerrainChecker _terrainChecker;
     private CameraControl _cameraControl;
+
+    private Quaternion _factorRotation = new Quaternion();
+    private Vector3 _factorPosition = Vector3.zero;
 
     private void Start()
     {
@@ -77,18 +81,20 @@ public class EntityPlayer : Entity
     public override void Move()
     {
         _text.text = "Player debuging \n";
+        _text.text = "Framerate;" + 1.0f / Time.deltaTime + "  \n";
         MoveVertical();
         MoveHorizontal();
         MoveForward();
         Grabity();
-        
-        if (_mommentSpeed > 30)
+
+        if (_mommentSpeed > 35)
         {
-            _cameraControl.SetZollyFX(true);
+            if (!_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
+            //RotationForward();
         }
         else
         {
-            _cameraControl.SetZollyFX(false);
+            if (_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
         }
     }
 
@@ -194,7 +200,7 @@ public class EntityPlayer : Entity
         }
         else
         {
-            var decreaseValue = incrementalAccelerate / 2;
+            var decreaseValue = incrementalAccelerate * 1.5f;
             _mommentSpeed = (_mommentSpeed > 0) ? _mommentSpeed - decreaseValue * Time.deltaTime : 0;
             _text.text += "decreases" + "\n";
             _text.text += "IncrementalValues: " + _mommentSpeed + "\n";
@@ -202,6 +208,32 @@ public class EntityPlayer : Entity
 
         _rigidbody.velocity = transform.forward * _mommentSpeed;
     }
+
+    /*private void RotationForward()
+    {
+        var inputRotationH = Input.GetAxisRaw(ControllerRotation);
+        //_animator.SetFloat(AnimatorHorizontalMove, inputRotationH);
+        if (inputRotationH != 0)
+        {
+            //_animator.SetBool(AnimatorIdleHorizontalMove, false);
+            MommentRotationForward(inputRotationH);
+        }
+        else
+        {
+            //_animator.SetBool(AnimatorIdleHorizontalMove, true);
+        }
+    }*/
+
+    /*private void MommentRotationForward(float input)
+    {
+        var eulerAngleVelocity = transform.forward * input;
+        var deltaRotation = Quaternion.Euler(eulerAngleVelocity * ((rotationSpeed / 2)  * Time.deltaTime));
+        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
+        
+        var position = transform.position;
+        var move = new Vector3(position.x, position.y + (input / 1000) * Time.deltaTime, position.z);
+        _rigidbody.MovePosition(move);
+    }*/
 
     private IEnumerator WaitForRespawn()
     {
