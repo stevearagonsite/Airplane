@@ -15,6 +15,7 @@ namespace Consts
         public const string PLAYER_READY = "IsPlayerReady";
         public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
         public const float PLAYER_RESPAWN_TIME = 4.0f;
+        public const float PLAYER_FORCE_TO_EXPLOTION = 10000;
     }
     
     public static class Layers

@@ -8,8 +8,10 @@ using Consts;
 using Utils;
 using System.Collections;
 using System;
+using Boo.Lang;
+using Memento;
 
-public class EntityPlayer : Entity
+public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 {
     private const string AnimatorHorizontalMove = "HorizontalMove";
     private const string AnimatorVerticalMove = "VerticalMove";
@@ -18,6 +20,7 @@ public class EntityPlayer : Entity
     private const string ControllerVertical = "Vertical";
     private const string ControllerHorizontal = "Horizontal";
     private const string ControllerRotation = "Rotation";
+    private const string PathExplotion = "Prefabs/WFXMR_Nuke";
 
     public float rotationSpeed = 90f;
     public float maxSpeed = 40f;
@@ -39,6 +42,15 @@ public class EntityPlayer : Entity
     private Quaternion _factorRotation = new Quaternion();
     private Vector3 _factorPosition = Vector3.zero;
 
+
+    // Memento pattern
+    private Caretaker<Memento<Tuple<Vector3, Quaternion>>> caretaker = new Caretaker<Memento<Tuple<Vector3, Quaternion>>>(3);
+
+    private Originator<Tuple<Vector3, Quaternion>> originator = new Originator<Tuple<Vector3, Quaternion>>();
+    private int currentArticle = 0;
+    private const float TimeToSaveState = 3;
+    private float _currentTimeToSaveState;
+
     private void Start()
     {
         _photonView = gameObject.GetComponent<PhotonView>();
@@ -50,17 +62,44 @@ public class EntityPlayer : Entity
         InitialOperationsOwner();
     }
 
+    #region MEMENTO
+    public void Save(Tuple<Vector3, Quaternion> state)
+    {
+        originator.Set(state);
+        caretaker.Add(originator.StoreInMemento());
+        currentArticle = caretaker.Count;
+    }
+
+    public Tuple<Vector3, Quaternion> UnDo()
+    {
+        if (currentArticle > 0) currentArticle -= 1;
+
+        var prev = caretaker.Get(currentArticle);
+        var prevArticle = originator.RestoreFromMemento(prev);
+        return prevArticle;
+    }
+
+    public Tuple<Vector3, Quaternion> ReDo()
+    {
+        if (currentArticle < caretaker.Count) currentArticle += 1;
+
+        var next = caretaker.Get(currentArticle);
+        var nextArticle = originator.RestoreFromMemento(next);
+        return nextArticle;
+    }
+    
+    public Tuple<Vector3, Quaternion> LastDo()
+    {
+        var next = caretaker.Get(0);
+        var nextArticle = originator.RestoreFromMemento(next);
+        return nextArticle;
+    }
+    #endregion MEMENTO
+
+
     private void InitialOperationsOwner()
     {
         if (!_photonView.IsMine) return;
-        /*Basic Settings of camera.*/
-        /*var camera = FindObjectOfType<Camera>().transform;
-        var position = transform.position;
-        
-        camera.position = new Vector3(position.x, position.y + 1.3f, position.z - 5.8f);
-        camera.rotation = transform.rotation;
-        camera.LookAt(lookAt);
-        camera.SetParent(gameObject.transform);*/
 
         _cameraControl = FindObjectOfType<CameraControl>();
         _cameraControl.target = GetComponentInChildren<LookAt>().transform;
@@ -78,15 +117,27 @@ public class EntityPlayer : Entity
         Move();
     }
 
+    private void SaveState()
+    {
+        _currentTimeToSaveState -= Time.deltaTime;
+        if (_currentTimeToSaveState >= 0) return;
+
+        _currentTimeToSaveState += TimeToSaveState;
+        Save(new Tuple<Vector3, Quaternion>(transform.position, transform.rotation));
+    }
+
     public override void Move()
     {
         _text.text = "Player debuging \n";
-        _text.text = "Framerate;" + 1.0f / Time.deltaTime + "  \n";
+        _text.text += "Framerate;" + 1.0f / Time.deltaTime + "  \n";
+        _text.text += "Player states \n";
+        _text.text += "count" + caretaker.Count + "  \n";
         MoveVertical();
         MoveHorizontal();
         MoveForward();
         Grabity();
-
+        SaveState();
+        
         if (_mommentSpeed > 35)
         {
             if (!_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
@@ -229,11 +280,27 @@ public class EntityPlayer : Entity
         var eulerAngleVelocity = transform.forward * input;
         var deltaRotation = Quaternion.Euler(eulerAngleVelocity * ((rotationSpeed / 2)  * Time.deltaTime));
         _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
-        
-        var position = transform.position;
-        var move = new Vector3(position.x, position.y + (input / 1000) * Time.deltaTime, position.z);
-        _rigidbody.MovePosition(move);
     }*/
+
+    private void OnCollisionEnter(Collision c)
+    {
+        var layer = c.gameObject.layer;
+        if (layer == Layers.TERRAIN_NUM_LAYER || layer == Layers.WALLS_NUM_LAYER)
+        {
+            var force = Vector3.Magnitude(c.impulse); //Force crash
+            if (force > UserGame.PLAYER_FORCE_TO_EXPLOTION)
+            {
+                PhotonNetwork.Instantiate(PathExplotion, transform.position, transform.rotation);
+                var savedData = LastDo();
+                
+                _rigidbody.velocity = Vector3.zero;
+                _rigidbody.angularVelocity = Vector3.zero;
+                _mommentSpeed = 5;
+                transform.position = savedData.Item1;
+                transform.rotation = savedData.Item2;
+            }
+        }
+    }
 
     private IEnumerator WaitForRespawn()
     {

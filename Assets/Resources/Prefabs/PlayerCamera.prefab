@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speedPosition: 20
-  speedRotation: 3.5
+  speedRotation: 5
   smootZolly: 20
   defaultOffset: {x: 0, y: 2, z: 9}
   zollyOffSet: {x: 0, y: 1.5, z: 6}
