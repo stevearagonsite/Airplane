@@ -9,3 +9,4 @@ Download [assets-store]
 * https://assetstore.unity.com/packages/tools/network/photon-unity-networking-classic-free-1786
 * https://assetstore.unity.com/packages/vfx/particles/war-fx-5669
 * https://assetstore.unity.com/packages/tools/modeling/probuilder-2-x-111418
+* https://assetstore.unity.com/packages/vfx/shaders/crystal-glass-45470
