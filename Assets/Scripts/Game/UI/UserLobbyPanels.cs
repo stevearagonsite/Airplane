@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 using Photon.Pun;
 using Photon.Realtime;
-using ExitGames.Client.Photon;
 using TMPro;
 
 using CustomObjects;
 using Utils;
 using Consts;
+using UnityEngine.SceneManagement;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
 public class UserLobbyPanels : MonoBehaviourPunCallbacks
@@ -20,7 +22,10 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     private const string CreateRoom = "CreateRoom";
     private const string RandomRoom = "RandomRoom";
     private const string ListRooms = "ListRoom";
+    private const string HowToPlay = "HowToPlay";
+    private const string Credits = "Credits";
     private const string InsideRoom = "InsideRoom";
+    private const string Loading = "Loading";
     private const string PathInsideRoomPlayer = "Prefabs/PlayerRoom";
     private const string PathListObjectRoom = "Prefabs/ListObjectRoom";
 
@@ -42,7 +47,17 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     // List Room
     public GameObject listRoomPanel;
     public GameObject roomListContent;
+    
+    // How to play
+    public GameObject howToPlayPanel;
 
+    // Credits
+    public GameObject creditsPanel;
+    
+    // Loading
+    public GameObject LoadingPanel;
+    public UserProgress progress;
+    
     // Inside Room
     public GameObject insideRoomPanel;
     public Button startGameButton;
@@ -51,7 +66,6 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     private Dictionary<string, RoomInfo> cachedRoomList;
     private Dictionary<string, GameObject> roomListEntries;
     private Dictionary<int, GameObject> playerListEntries;
-
     public void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -67,49 +81,70 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     {
         _onActivePanel.Add(Login, new EventsAction());
         _onActivePanel[Login].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             loginPanel.SetActive(true);
         });
 
         _onActivePanel.Add(Selection, new EventsAction());
         _onActivePanel[Selection].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             selectionPanel.SetActive(true);
         });
 
         _onActivePanel.Add(CreateRoom, new EventsAction());
         _onActivePanel[CreateRoom].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             createRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(RandomRoom, new EventsAction());
         _onActivePanel[RandomRoom].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             randomRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(ListRooms, new EventsAction());
         _onActivePanel[ListRooms].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             listRoomPanel.SetActive(true);
         });
 
         _onActivePanel.Add(InsideRoom, new EventsAction());
         _onActivePanel[InsideRoom].Add(() => {
-            DiableAllPanels();
+            DisableAllPanels();
             insideRoomPanel.SetActive(true);
+        });
+        
+        _onActivePanel.Add(HowToPlay, new EventsAction());
+        _onActivePanel[HowToPlay].Add(() => {
+            DisableAllPanels();
+            howToPlayPanel.SetActive(true);
+        });
+        
+        _onActivePanel.Add(Credits, new EventsAction());
+        _onActivePanel[Credits].Add(() => {
+            DisableAllPanels();
+            creditsPanel.SetActive(true);
+        });
+        
+        _onActivePanel.Add(Loading, new EventsAction());
+        _onActivePanel[Loading].Add(() => {
+            DisableAllPanels();
+            LoadingPanel.SetActive(true);
         });
     }
 
-    private void DiableAllPanels()
+    private void DisableAllPanels()
     {
         loginPanel.SetActive(false);
         selectionPanel.SetActive(false);
         createRoomPanel.SetActive(false);
         randomRoomPanel.SetActive(false);
         listRoomPanel.SetActive(false);
+        howToPlayPanel.SetActive(false);
+        creditsPanel.SetActive(false);
         insideRoomPanel.SetActive(false);
+        LoadingPanel.SetActive(false);
     }
 
     public void SetActivePanel(string activePanel)
@@ -120,7 +155,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     #region INSIDE-ROOM
     private bool CheckPlayersReady()
     {
-        if (!PhotonNetwork.IsMasterClient || PhotonNetwork.PlayerList.Length < 2) return false;
+        if (!PhotonNetwork.IsMasterClient /*|| PhotonNetwork.PlayerList.Length < 2*/) return false;
 
         foreach (Player p in PhotonNetwork.PlayerList)
         {
@@ -413,6 +448,19 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
         PhotonNetwork.LoadLevel(scene);
+        StartCoroutine ("LoadScene");
     }
+
+    private IEnumerator LoadScene()
+    {
+        while (PhotonNetwork.LevelLoadingProgress < 0.98f)
+        {
+            progress.SetProgress(PhotonNetwork.LevelLoadingProgress);
+            progress.SetText((PhotonNetwork.LevelLoadingProgress * 100).ToString("F0") + "%"); 
+            yield return null;
+        }
+        LoadingPanel.SetActive (false);
+    }
+
     #endregion UI
 }

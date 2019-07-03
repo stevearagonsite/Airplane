@@ -30,12 +30,15 @@ public class ManagerUpdate : MonoBehaviour {
 
     private void Update()
     {
-        if (!isPause && Execute.Equals(null)) Execute();
+        if (!isPause && !Execute.Equals(null))
+        {
+            Execute();
+        }
     }
 
     private void LateUpdate()
     {
-        if (!isPause && ExecuteLate.Equals(null)) ExecuteLate();
+        if (!isPause && !ExecuteLate.Equals(null)) ExecuteLate();
     }
 
     private void FixedUpdate()

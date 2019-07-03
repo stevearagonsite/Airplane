@@ -11,8 +11,8 @@ using Utils;
 
 public class ManagerPositions : MonoBehaviour
 {
-    private PhotonView _photonView;
     public static ManagerPositions Instance;
+    private PhotonView _photonView;
     private List<Transform> _listOfAvailablePositions = new List<Transform>();
 
     private void Awake()
