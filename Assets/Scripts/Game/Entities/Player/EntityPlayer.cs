@@ -21,6 +21,8 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     public GameObject trailControl;
     private bool _controllable = true;
     private float _timeGrabity = 0;
+    private bool _isAccelerating;
+    private float _mommentSpeed;
 
     private Rigidbody _rigidbody;
     private Renderer _renderer;
@@ -77,26 +79,54 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 
     public override void Move()
     {
+        Grabity();
         MoveForward(Controller.Instance.ForwardValue);
         MoveVertical(Controller.Instance.VerticalValue);
         MoveHorizontal(Controller.Instance.HorizontalValue);
         MoveRotation(Controller.Instance.RotationValue);
         SaveState();
 
-        /*if (_mommentSpeed > 35)
+        if (_mommentSpeed > 35)
         {
             if (!_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
         }
         else
         {
             if (_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
-        }*/
+        }
+    }
+    private void Grabity()
+    {
+        if (!_terrainChecker.isTerrein)
+        {
+            var factor = Vector3.up * (9.8f * _rigidbody.mass * _timeGrabity) / 2000;
+            _rigidbody.MovePosition(transform.position - factor * Time.deltaTime);
+            TimeGrabity();
+        }
+        else
+        {
+            TimeGrabity();
+        }
+    }
+
+    private void TimeGrabity()
+    {
+        if (!_isAccelerating && _mommentSpeed < 10)
+        {
+            _timeGrabity = _timeGrabity < 2 ? _timeGrabity + Time.deltaTime / 2 : 2;
+            //_timeGrabity += Time.deltaTime;
+        }
+        else
+        {
+            _timeGrabity = 0;
+        }
     }
 
     private void MoveForward(float input)
     {
         var toMove = _currentMove.MoveForward(input);
 
+        _mommentSpeed = toMove;
         _rigidbody.velocity = transform.forward * toMove;
     }
 
@@ -108,7 +138,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         if (input != 0)
         {
             _animator.SetBool(AnimatorIdleHorizontalMove, false);
-            var eulerAngleVelocity = transform.rotation.eulerAngles + transform.up * toMove;
+            var eulerAngleVelocity = transform.rotation.eulerAngles + Vector3.up * toMove;
             var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
             _rigidbody.MoveRotation(deltaRotation);
         }
@@ -125,7 +155,9 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         if (input != 0)
         {
             _animator.SetBool(AnimatorIdleVerticalMove, false);
-            var eulerAngleVelocity = transform.rotation.eulerAngles - transform.right * toMove;
+
+            /*rotation object*/
+            var eulerAngleVelocity = transform.rotation.eulerAngles - Vector3.right * toMove;
             var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
             _rigidbody.MoveRotation(deltaRotation);
         }
@@ -142,7 +174,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         if (input != 0)
         {
             //_animator.SetBool(AnimatorIdleVerticalMove, false);
-            var eulerAngleVelocity = transform.rotation.eulerAngles + transform.forward * toMove;
+            var eulerAngleVelocity = transform.rotation.eulerAngles + Vector3.forward * toMove;
             var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
             _rigidbody.MoveRotation(deltaRotation);
         }
