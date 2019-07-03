@@ -11,3 +11,5 @@ Download [assets-store]
 * https://assetstore.unity.com/packages/vfx/shaders/crystal-glass-45470
 * https://assetstore.unity.com/packages/tools/modeling/probuilder-2-x-111418
 * https://assetstore.unity.com/packages/tools/modeling/progrids-2-x-111425
+
+You can get this packages in the branch _packages_.
