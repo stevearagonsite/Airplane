@@ -1,15 +1,13 @@
-﻿using Photon.Pun;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using Photon.Pun;
 using Photon.Pun.UtilityScripts;
 using ExitGames.Client.Photon;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Memento;
 using Consts;
 using Utils;
-using System.Collections;
-using System;
-using Boo.Lang;
-using Memento;
 
 public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 {
@@ -17,35 +15,13 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     private const string AnimatorVerticalMove = "VerticalMove";
     private const string AnimatorIdleHorizontalMove = "IdleHorizontalMove";
     private const string AnimatorIdleVerticalMove = "IdleVerticalMove";
-    private const string ControllerVertical = "Vertical";
-    private const string ControllerHorizontal = "Horizontal";
-    private const string ControllerRotation = "Rotation";
     private const string PathExplotion = "Prefabs/WFXMR_Nuke";
+    private const string MoveBehaviorPlayerNormal = "normal";
 
-    public float rotationSpeed = 90f;
-    public float horizontalMaxSpeed = 90f;
-    public float verticalMaxSpeed = 90f;
-    public float forwardMaxSpeed = 90f;
-    public float maxSpeed = 40f;
-    public float incrementalAccelerate = 6f;
-    public float incrementalRotationVerticalAccelerate = 6f;
-    public float incrementalRorationHorizontalAccelerate = 6f;
-    public float incrementalRorationForwardAccelerate = 6f;
-    
     public GameObject trailControl;
-
-    private float _mommentSpeed = 0.0f;
-    private float _mommentRotationVercialSpeed = 0.0f;
-    private float _mommentRotationHorizontalSpeed = 0.0f;
-    private float _mommentRotationForwardSpeed = 0.0f;
-    private bool _isAccelerating = false;
-    private bool _isAcceleratingRotationHorizontal = false;
-    private bool _isAcceleratingRotationVertical = false;
-    private bool _isAcceleratingRotationForward = false;
     private bool _controllable = true;
     private float _timeGrabity = 0;
 
-    private Text _text;
     private Rigidbody _rigidbody;
     private Renderer _renderer;
     private Collider _collider;
@@ -53,15 +29,14 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     private TerrainChecker _terrainChecker;
     private CameraControl _cameraControl;
 
-    private Quaternion _factorRotation = new Quaternion();
-    private Vector3 _factorPosition = Vector3.zero;
-
-
     // Memento pattern
-    private Caretaker<Memento<Tuple<Vector3, Quaternion>>> caretaker = new Caretaker<Memento<Tuple<Vector3, Quaternion>>>(6);
+    private Caretaker<Memento<Tuple<Vector3, Quaternion>>> caretaker =
+        new Caretaker<Memento<Tuple<Vector3, Quaternion>>>(6);
 
-    private Originator<Tuple<Vector3, Quaternion>> originator = new Originator<Tuple<Vector3, Quaternion>>();
-    private int currentArticle = 0;
+    private Originator<Tuple<Vector3, Quaternion>> originator =
+        new Originator<Tuple<Vector3, Quaternion>>();
+
+    private int _currentArticle = 0;
     private const float TimeToSaveState = 0.5f;
     private float _currentTimeToSaveState;
 
@@ -70,51 +45,11 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         _photonView = gameObject.GetComponent<PhotonView>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
-        _terrainChecker = GetComponentInChildren<TerrainChecker>();
-        _text = FindObjectOfType<Text>();
 
-        InitialOperationsOwner();
-    }
-
-    #region MEMENTO
-    public void Save(Tuple<Vector3, Quaternion> state)
-    {
-        originator.Set(state);
-        caretaker.Add(originator.StoreInMemento());
-        currentArticle = caretaker.Count;
-    }
-
-    public Tuple<Vector3, Quaternion> UnDo()
-    {
-        if (currentArticle > 0) currentArticle -= 1;
-
-        var prev = caretaker.Get(currentArticle);
-        var prevArticle = originator.RestoreFromMemento(prev);
-        return prevArticle;
-    }
-
-    public Tuple<Vector3, Quaternion> ReDo()
-    {
-        if (currentArticle < caretaker.Count) currentArticle += 1;
-
-        var next = caretaker.Get(currentArticle);
-        var nextArticle = originator.RestoreFromMemento(next);
-        return nextArticle;
-    }
-    
-    public Tuple<Vector3, Quaternion> LastDo()
-    {
-        var next = caretaker.Get(0);
-        var nextArticle = originator.RestoreFromMemento(next);
-        return nextArticle;
-    }
-    #endregion MEMENTO
-
-
-    private void InitialOperationsOwner()
-    {
         if (!_photonView.IsMine) return;
-
+        _moveBehaviors.Add(MoveBehaviorPlayerNormal, new MoveEntityPlayerNormal());
+        _currentMove = _moveBehaviors[MoveBehaviorPlayerNormal];
+        _terrainChecker = GetComponentInChildren<TerrainChecker>();
         _cameraControl = FindObjectOfType<CameraControl>();
         _cameraControl.target = GetComponentInChildren<LookAt>().transform;
     }
@@ -142,93 +77,40 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 
     public override void Move()
     {
-        _text.text = "Player debuging \n";
-        _text.text += "Framerate;" + 1.0f / Time.deltaTime + "  \n";
-        _text.text += "Player states \n";
-        _text.text += "count" + caretaker.Count + "  \n";
-        MoveVertical();
-        MoveHorizontal();
-        MoveForward();
-        Grabity();
+        MoveForward(Controller.Instance.ForwardValue);
+        MoveVertical(Controller.Instance.VerticalValue);
+        MoveHorizontal(Controller.Instance.HorizontalValue);
+        MoveRotation(Controller.Instance.RotationValue);
         SaveState();
-        RotationForward();
-        
-        if (_mommentSpeed > 35)
+
+        /*if (_mommentSpeed > 35)
         {
             if (!_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
         }
         else
         {
             if (_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
-        }
+        }*/
     }
 
-    private void Grabity()
+    private void MoveForward(float input)
     {
-        if (!_terrainChecker.isTerrein)
-        {
-            var factor = Vector3.up * (9.8f * _rigidbody.mass * _timeGrabity) / 2000;
-            _rigidbody.MovePosition(transform.position - factor * Time.deltaTime);
-            TimeGrabity();
-        }
-        else
-        {
-            TimeGrabity();
-        }
+        var toMove = _currentMove.MoveForward(input);
+
+        _rigidbody.velocity = transform.forward * toMove;
     }
 
-    private void TimeGrabity()
+    private void MoveHorizontal(float input)
     {
-        if (!_isAccelerating && _mommentSpeed < 10)
-        {
-            _timeGrabity = _timeGrabity < 2 ? _timeGrabity + Time.deltaTime / 2 : 2;
-            //_timeGrabity += Time.deltaTime;
-        }
-        else
-        {
-            _timeGrabity = 0;
-        }
-    }
+        _animator.SetFloat(AnimatorHorizontalMove, input);
+        var toMove = _currentMove.MoveHorizontal(input);
 
-    private void MoveVertical()
-    {
-        var inputRotationV = Input.GetAxisRaw(ControllerVertical);
-        _animator.SetFloat(AnimatorVerticalMove, inputRotationV);
-        if (inputRotationV != 0)
-        {
-            _animator.SetBool(AnimatorIdleVerticalMove, false);
-            MommentMoveVertical(inputRotationV);
-        }
-        else
-        {
-            _animator.SetBool(AnimatorIdleVerticalMove, true);
-        }
-    }
-
-    private void MommentMoveVertical(float input)
-    {
-        /*Rotation of object*/
-        _rigidbody.velocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
-
-        var eulerAngleVelocity = -Vector3.right * input;
-        var deltaRotation = Quaternion.Euler(eulerAngleVelocity * (rotationSpeed * Time.deltaTime));
-        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
-
-        /*Move of object*/
-        var position = transform.position;
-        var move = new Vector3(position.x, position.y + (input / 1000) * Time.deltaTime, position.z);
-        _rigidbody.MovePosition(move);
-    }
-
-    private void MoveHorizontal()
-    {
-        var inputRotationH = Input.GetAxisRaw(ControllerHorizontal);
-        _animator.SetFloat(AnimatorHorizontalMove, inputRotationH);
-        if (inputRotationH != 0)
+        if (input != 0)
         {
             _animator.SetBool(AnimatorIdleHorizontalMove, false);
-            MommentMoveHorizontal(inputRotationH);
+            var eulerAngleVelocity = transform.rotation.eulerAngles + transform.up * toMove;
+            var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
+            _rigidbody.MoveRotation(deltaRotation);
         }
         else
         {
@@ -236,64 +118,38 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         }
     }
 
-    private void MommentMoveHorizontal(float input)
+    private void MoveVertical(float input)
     {
-        /*Rotation of object*/
-        _rigidbody.velocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
-
-        var eulerAngleVelocity = transform.up * input;
-        var deltaRotation = Quaternion.Euler(eulerAngleVelocity * (rotationSpeed * Time.deltaTime));
-        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
-
-        /*Move of object*/
-        var position = transform.position;
-        var move = new Vector3(position.x + (input / 1000) * Time.deltaTime, position.y, position.z);
-        _rigidbody.MovePosition(move);
-    }
-
-    private void MoveForward()
-    {
-        _isAccelerating = Input.GetKey(KeyCode.Space);
-        if (_isAccelerating)
+        _animator.SetFloat(AnimatorVerticalMove, input);
+        var toMove = _currentMove.MoveVertical(input);
+        if (input != 0)
         {
-            _mommentSpeed = (_mommentSpeed < maxSpeed)
-                ? _mommentSpeed + incrementalAccelerate * Time.deltaTime
-                : maxSpeed;
-            _text.text += "Increases" + "\n";
-            _text.text += "IncrementalValues: " + _mommentSpeed + "\n";
+            _animator.SetBool(AnimatorIdleVerticalMove, false);
+            var eulerAngleVelocity = transform.rotation.eulerAngles - transform.right * toMove;
+            var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
+            _rigidbody.MoveRotation(deltaRotation);
         }
         else
         {
-            var decreaseValue = incrementalAccelerate * 1.5f;
-            _mommentSpeed = (_mommentSpeed > 0) ? _mommentSpeed - decreaseValue * Time.deltaTime : 0;
-            _text.text += "decreases" + "\n";
-            _text.text += "IncrementalValues: " + _mommentSpeed + "\n";
+            _animator.SetBool(AnimatorIdleVerticalMove, true);
         }
-
-        _rigidbody.velocity = transform.forward * _mommentSpeed;
     }
 
-    private void RotationForward()
+    private void MoveRotation(float input)
     {
-        var inputRotationH = Input.GetAxisRaw(ControllerRotation);
-        //_animator.SetFloat(AnimatorHorizontalMove, inputRotationH);
-        if (inputRotationH != 0)
+        //_animator.SetFloat(AnimatorVerticalMove, input);
+        var toMove = _currentMove.MoveRotation(input);
+        if (input != 0)
         {
-            //_animator.SetBool(AnimatorIdleHorizontalMove, false);
-            MommentRotationForward(inputRotationH);
+            //_animator.SetBool(AnimatorIdleVerticalMove, false);
+            var eulerAngleVelocity = transform.rotation.eulerAngles + transform.forward * toMove;
+            var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
+            _rigidbody.MoveRotation(deltaRotation);
         }
         else
         {
-            //_animator.SetBool(AnimatorIdleHorizontalMove, true);
+            //_animator.SetBool(AnimatorIdleVerticalMove, true);
         }
-    }
-
-    private void MommentRotationForward(float input)
-    {
-        var eulerAngleVelocity = transform.forward * input;
-        var deltaRotation = Quaternion.Euler(eulerAngleVelocity * ((rotationSpeed / 2)  * Time.deltaTime));
-        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
     }
 
     private void OnCollisionEnter(Collision c)
@@ -307,11 +163,11 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
                 trailControl.SetActive(false);
                 PhotonNetwork.Instantiate(PathExplotion, transform.position, transform.rotation);
                 var savedData = LastDo();
-                
+
                 _rigidbody.velocity = Vector3.zero;
                 _rigidbody.angularVelocity = Vector3.zero;
-                
-                _mommentSpeed = 5;
+
+                _currentMove.ResetMomments();
                 transform.position = savedData.Item1;
                 transform.rotation = savedData.Item2;
                 trailControl.SetActive(true);
@@ -325,6 +181,42 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 
         _photonView.RPC("RespawnSpaceship", RpcTarget.AllViaServer);
     }
+
+    #region MEMENTO
+
+    public void Save(Tuple<Vector3, Quaternion> state)
+    {
+        originator.Set(state);
+        caretaker.Add(originator.StoreInMemento());
+        _currentArticle = caretaker.Count;
+    }
+
+    public Tuple<Vector3, Quaternion> UnDo()
+    {
+        if (_currentArticle > 0) _currentArticle -= 1;
+
+        var prev = caretaker.Get(_currentArticle);
+        var prevArticle = originator.RestoreFromMemento(prev);
+        return prevArticle;
+    }
+
+    public Tuple<Vector3, Quaternion> ReDo()
+    {
+        if (_currentArticle < caretaker.Count) _currentArticle += 1;
+
+        var next = caretaker.Get(_currentArticle);
+        var nextArticle = originator.RestoreFromMemento(next);
+        return nextArticle;
+    }
+
+    public Tuple<Vector3, Quaternion> LastDo()
+    {
+        var next = caretaker.Get(0);
+        var nextArticle = originator.RestoreFromMemento(next);
+        return nextArticle;
+    }
+
+    #endregion MEMENTO
 
     #region PUN-CALLBACKS
 

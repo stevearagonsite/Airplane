@@ -406,15 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8980f571fab8a7347a872951672e1f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 70
-  horizontalMaxSpeed: 90
-  verticalMaxSpeed: 90
-  forwardMaxSpeed: 90
-  maxSpeed: 60
-  incrementalAccelerate: 3
-  incrementalRotationVerticalAccelerate: 6
-  incrementalRorationHorizontalAccelerate: 6
-  incrementalRorationForwardAccelerate: 6
   trailControl: {fileID: 665116735916085258}
 --- !u!95 &7065608614869092384
 Animator:

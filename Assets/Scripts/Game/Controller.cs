@@ -1,23 +1,45 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun.Demo.PunBasics;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    private const string ControllerForward = "Forward";
-    private const string ControllerVertical = "Vertical";
-    private const string ControllerHorizontal = "Horizontal";
-    private const string ControllerRotation = "Rotation";
-    
-    // Start is called before the first frame update
-    void Start()
+    public static Controller Instance;
+    private const string InputNameForward = "Forward";
+    private const string InputNameVertical = "Vertical";
+    private const string InputNameHorizontal = "Horizontal";
+    private const string InputNameRotation = "Rotation";
+
+    public float ForwardValue { get; private set; }
+    public float HorizontalValue { get; private set; }
+    public float VerticalValue { get; private set; }
+    public float RotationValue { get; private set; }
+
+    private void Awake()
     {
-        
+        if (Instance != null)
+        {
+            Destroy(this);
+            Instance = this;
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        ManagerUpdate.Instance.Execute += Execute;
+    }
+
+    void Execute()
+    {
+        ForwardValue = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        HorizontalValue = Input.GetAxisRaw(InputNameHorizontal);
+        VerticalValue = Input.GetAxisRaw(InputNameVertical);
+        RotationValue = Input.GetAxisRaw(InputNameRotation);
     }
 }

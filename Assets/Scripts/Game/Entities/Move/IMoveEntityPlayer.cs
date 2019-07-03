@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMoveEntityPlayer
+public interface IMoveEntity
 {
+    void ResetMomments();
     float MoveForward(float speed);
     float MoveHorizontal(float speed);
     float MoveVertical(float speed);

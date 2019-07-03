@@ -12,6 +12,10 @@ public abstract class Entity : MonoBehaviour
 {
     protected PhotonView _photonView;
     protected int _life;
+    
+    //Strategy
+    protected Dictionary<string, IMoveEntity> _moveBehaviors = new Dictionary<string, IMoveEntity>();
+    protected IMoveEntity _currentMove;
 
     private void Awake()
     {
