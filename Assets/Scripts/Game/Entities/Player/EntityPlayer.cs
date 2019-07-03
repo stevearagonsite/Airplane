@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
@@ -18,15 +20,17 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     private const string PathExplotion = "Prefabs/WFXMR_Nuke";
     private const string MoveBehaviorPlayerNormal = "normal";
 
+    [Header("Player parameters")]
     public GameObject trailControl;
+    public GameObject model;
+    
     private bool _controllable = true;
-    private float _timeGrabity = 0;
+    private float _timeGrabity;
     private bool _isAccelerating;
     private float _mommentSpeed;
 
     private Rigidbody _rigidbody;
-    private Renderer _renderer;
-    private Collider _collider;
+    private List<Collider> _colliders;
     private Animator _animator;
     private TerrainChecker _terrainChecker;
     private CameraControl _cameraControl;
@@ -47,6 +51,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         _photonView = gameObject.GetComponent<PhotonView>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
+        _colliders = gameObject.GetComponents<Collider>().ToList();
 
         if (!_photonView.IsMine) return;
         _moveBehaviors.Add(MoveBehaviorPlayerNormal, new MoveEntityPlayerNormal());
@@ -192,26 +197,9 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
             var force = Vector3.Magnitude(c.impulse); //Force crash
             if (force > UserGame.PLAYER_FORCE_TO_EXPLOTION)
             {
-                trailControl.SetActive(false);
-                PhotonNetwork.Instantiate(PathExplotion, transform.position, transform.rotation);
-                var savedData = LastDo();
-
-                _rigidbody.velocity = Vector3.zero;
-                _rigidbody.angularVelocity = Vector3.zero;
-
-                _currentMove.ResetMomments();
-                transform.position = savedData.Item1;
-                transform.rotation = savedData.Item2;
-                trailControl.SetActive(true);
+                _photonView.RPC("DestroyAirplane", RpcTarget.AllViaServer);
             }
         }
-    }
-
-    private IEnumerator WaitForRespawn()
-    {
-        yield return new WaitForSeconds(UserGame.PLAYER_RESPAWN_TIME);
-
-        _photonView.RPC("RespawnSpaceship", RpcTarget.AllViaServer);
     }
 
     #region MEMENTO
@@ -253,22 +241,37 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     #region PUN-CALLBACKS
 
     [PunRPC]
-    public void RespawnSpaceship()
+    public void RespawnAirplane()
     {
-        _collider.enabled = true;
-        _renderer.enabled = true;
-
+        _cameraControl.target = transform;
+        var savedData = LastDo();
+        trailControl.SetActive(true);
+        model.SetActive(true);
+        foreach (var collider in _colliders)
+        {
+            collider.enabled = true;
+        }
         _controllable = true;
+        transform.position = savedData.Item1;
+        transform.rotation = savedData.Item2;
     }
 
     [PunRPC]
-    public void DestroySpaceship()
+    public void DestroyAirplane()
     {
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
+        _currentMove.ResetMomments();
+        model.SetActive(false);
+        _cameraControl.target = null;
 
-        _collider.enabled = false;
-        _renderer.enabled = false;
+        PhotonNetwork.Instantiate(PathExplotion, transform.position, transform.rotation);
+
+        trailControl.SetActive(false);
+        foreach (var collider in _colliders)
+        {
+            collider.enabled = false;
+        }
         _controllable = false;
 
         if (_photonView.IsMine)
@@ -291,5 +294,11 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         }
     }
 
+    private IEnumerator WaitForRespawn()
+    {
+        yield return new WaitForSeconds(UserGame.PLAYER_RESPAWN_TIME);
+
+        _photonView.RPC("RespawnAirplane", RpcTarget.AllViaServer);
+    }
     #endregion PUN-CALLBACKS
 }

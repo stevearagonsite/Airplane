@@ -10,8 +10,10 @@ using Consts;
 using Utils;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class ManagerGame : MonoBehaviour
+public class ManagerGame : MonoBehaviourPunCallbacks
 {
+    public GameObject canvasUIFinished;
+    
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -67,4 +69,68 @@ public class ManagerGame : MonoBehaviour
 
         PhotonNetwork.Instantiate("Prefabs/EntityPlayer", initialPosition, rotation, 0);
     }
+    
+    private void CheckEndOfGame()
+    {
+        var allDestroyed = true;
+
+        foreach (Player p in PhotonNetwork.PlayerList)
+        {
+            object lives;
+            if (p.CustomProperties.TryGetValue(UserGame.PLAYER_LIVES, out lives))
+            {
+                if ((int) lives > 0)
+                {
+                    allDestroyed = false;
+                    break;
+                }
+            }
+        }
+
+        if (allDestroyed)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                StopAllCoroutines();
+            }
+
+            //Reset the values.
+            string winner = "";
+            int score = -1;
+
+            foreach (Player p in PhotonNetwork.PlayerList)
+            {
+                if (p.GetScore() > score)
+                {
+                    winner = p.NickName;
+                    score = p.GetScore();
+                }
+            }
+
+            StartCoroutine(EndOfGame(winner, score));
+        }
+    }
+
+    #region PUN-CALLBACKS
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        CheckEndOfGame();
+    }
+    
+    private IEnumerator EndOfGame(string winner, int score)
+    {
+        float timer = 5.0f;
+
+        while (timer > 0.0f)
+        {
+            yield return new WaitForEndOfFrame();
+
+            timer -= Time.deltaTime;
+        }
+
+        PhotonNetwork.LeaveRoom();
+    }
+
+    #endregion PUN-CALLBACKS
 }

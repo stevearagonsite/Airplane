@@ -8,22 +8,22 @@ using Utils;
 [RequireComponent(typeof(Camera))]
 public class CameraControl : MonoBehaviour
 {
-    [Header("Camera Settings")]
+    [Header("Camera Settings")] 
     public Transform target;
     [Range(0, 20)] public float speedPosition = 20f;
     [Range(0, 20)] public float speedRotation = 5f;
     [Range(0, 20)] public float smootZolly = 16;
-    
-    [Header("Zolly FX")]
+
+    [Header("Zolly FX")] 
     public Vector3 defaultOffset = new Vector3(0, 1f, 1f);
     public Vector3 zollyOffSet = new Vector3(0, 0.5f, 0.5f);
 
     [Range(0, 180)] public float defaultFieldView = 60f;
     [Range(0, 180)] public float zollyFieldOfView = 110f;
-    
+
     private Vector3 _currentOffSet = new Vector3();
 
-    
+
     public float currentFieldOfView { get; private set; }
     public bool updateIsPlaying { get; private set; }
     public bool zollyView { get; private set; }
@@ -135,11 +135,15 @@ public class CameraControl : MonoBehaviour
     }
 
     #endregion ZollyView
+
     void OnDrawGizmos()
     {
-        Gizmos.color = _wallDetection ? Color.green : Color.yellow;
-        Gizmos.DrawLine(transform.position, target.transform.position);
-        Gizmos.color = updateIsPlaying ? Color.green : Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
+        if (target)
+        {
+            Gizmos.color = _wallDetection ? Color.green : Color.yellow;
+            Gizmos.DrawLine(transform.position, target.transform.position);
+            Gizmos.color = updateIsPlaying ? Color.green : Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, 0.5f);
+        }
     }
 }
