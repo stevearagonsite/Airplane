@@ -251,7 +251,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         {
             collider.enabled = true;
         }
-        _controllable = true;
+        _controllable = false;
         transform.position = savedData.Item1;
         transform.rotation = savedData.Item2;
     }
@@ -279,16 +279,21 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
             object lives;
             if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(UserGame.PLAYER_LIVES, out lives))
             {
-                PhotonNetwork.LocalPlayer.SetCustomProperties(
+                /*PhotonNetwork.LocalPlayer.SetCustomProperties(
                     new Hashtable
                     {
                         {UserGame.PLAYER_LIVES, ((int) lives <= 1) ? 0 : ((int) lives - 1)}
                     }
-                );
+                );*/
 
                 if (((int) lives) > 1)
                 {
                     StartCoroutine("WaitForRespawn");
+                }
+                else
+                {
+                    PhotonNetwork.LeaveRoom();
+                    PhotonNetwork.LoadLevel("MenuLobby");
                 }
             }
         }

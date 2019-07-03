@@ -28,6 +28,8 @@ namespace Consts
         public const string TRIGGERS_LABEL_LAYER  = "Triggers";
         public const int WALLS_NUM_LAYER  = 11;
         public const string WALLS_LABEL_LAYER  = "Walls";
+        public const int WINNER_NUM_LAYER  = 12;
+        public const string WINNER_LABEL_LAYER  = "Winner";
     }
 
     public static class Methods

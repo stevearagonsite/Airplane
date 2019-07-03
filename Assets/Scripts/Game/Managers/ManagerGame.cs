@@ -7,12 +7,14 @@ using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 using Photon.Pun;
 using Consts;
+using UnityEngine.UI;
 using Utils;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class ManagerGame : MonoBehaviourPunCallbacks
 {
     public GameObject canvasUIFinished;
+    public Text text;
     
     private void Awake()
     {
@@ -26,9 +28,25 @@ public class ManagerGame : MonoBehaviourPunCallbacks
         {
             {UserGame.PLAYER_LOADED_LEVEL, true}
         };
+        
         PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+        TriggerWinner.Instance.eventHaveWinner += ExecuteWinner;
+        TriggerWinner.Instance.eventHaveLosers += ExecuteLoser;
 
         StartCoroutine(InitialTimeToStart());
+    }
+
+    private void ExecuteWinner()
+    {
+        Debug.Log("I am a winner!!");
+        string player = PhotonNetwork.LocalPlayer.NickName;
+        StartCoroutine(EndOfGame(player, true));
+    }
+
+    private void ExecuteLoser()
+    {
+        string player = PhotonNetwork.LocalPlayer.NickName;
+        StartCoroutine(EndOfGame(player, false));
     }
 
     private IEnumerator InitialTimeToStart()
@@ -103,11 +121,10 @@ public class ManagerGame : MonoBehaviourPunCallbacks
                 if (p.GetScore() > score)
                 {
                     winner = p.NickName;
-                    score = p.GetScore();
                 }
             }
 
-            StartCoroutine(EndOfGame(winner, score));
+            StartCoroutine(EndOfGame(winner, false));
         }
     }
 
@@ -118,10 +135,13 @@ public class ManagerGame : MonoBehaviourPunCallbacks
         CheckEndOfGame();
     }
     
-    private IEnumerator EndOfGame(string winner, int score)
+    private IEnumerator EndOfGame(string player, bool isWinner)
     {
+        canvasUIFinished.SetActive(true);
         float timer = 5.0f;
-
+        var textToShow = isWinner ? "winner: " : "Loser: ";
+        text.text = $"{textToShow}{player}";
+        
         while (timer > 0.0f)
         {
             yield return new WaitForEndOfFrame();
@@ -130,6 +150,8 @@ public class ManagerGame : MonoBehaviourPunCallbacks
         }
 
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("MenuLobby");
+        canvasUIFinished.SetActive(false);
     }
 
     #endregion PUN-CALLBACKS
