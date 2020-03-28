@@ -15,9 +15,6 @@
 # TextMesh Pro files
 [Aa]ssets/TextMesh*Pro/
 
-# TextMesh downloads (import library)
-[Aa]ssets/[Dd]ownloads/
-
 # Visual Studio cache directory
 .vs/
 
