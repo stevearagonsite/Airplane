@@ -6,44 +6,50 @@ using Consts;
 using Memento;
 using Photon.Pun;
 using UnityEngine;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
-{
+public class EntityPlayer : Entity, IObservableEventDead,
+    IApplyMemento<Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>> {
+    
     private const string AnimatorHorizontalMove = "HorizontalMove";
     private const string AnimatorVerticalMove = "VerticalMove";
     private const string AnimatorIdleHorizontalMove = "IdleHorizontalMove";
     private const string AnimatorIdleVerticalMove = "IdleVerticalMove";
-    private const string PathVFXExplotion = "Prefabs/WFXMR_Nuke";
+    private const string PathVFXExplotion = "Prefabs/VFXExplotion";
     private const string MoveBehaviorPlayerNormal = "normal";
-
-    [Header("Player parameters")]
-    public GameObject trailControl;
-    public GameObject model;
     
-    private bool _controllable = true;
-    private float _timeGrabity;
+    [Header("Player parameters")] public GameObject trailControl;
+    public GameObject model;
+
+    private bool _controllable;
+    private float _timeGravity;
     private bool _isAccelerating;
-    private float _mommentSpeed;
+    private float _momentSpeed;
 
     private Rigidbody _rigidbody;
     private List<Collider> _colliders;
     private Animator _animator;
     private TerrainChecker _terrainChecker;
     private CameraControl _cameraControl;
+    private event Action OnEventDead = delegate {};
 
     // Memento pattern
-    private Caretaker<Memento<Tuple<Vector3, Quaternion>>> caretaker =
-        new Caretaker<Memento<Tuple<Vector3, Quaternion>>>(6);
+    private Caretaker<Memento<Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>>> caretaker =
+        new Caretaker<Memento<Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>>>(6);
 
-    private Originator<Tuple<Vector3, Quaternion>> originator =
-        new Originator<Tuple<Vector3, Quaternion>>();
+    private Originator<Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>> originator =
+        new Originator<Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>>();
 
     private int _currentArticle = 0;
     private const float TimeToSaveState = 0.5f;
     private float _currentTimeToSaveState;
 
-    private void Start()
-    {
+    public bool Controllable {
+        get => _controllable;
+        set => _controllable = value;
+    }
+
+    private void Start() {
         _photonView = gameObject.GetComponent<PhotonView>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
@@ -57,104 +63,92 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         _cameraControl.target = GetComponentInChildren<LookAt>().transform;
     }
 
-    protected override void Execution()
-    {
+    protected override void Execution() {
     }
 
-    protected override void FixedExecution()
-    {
+    protected override void FixedExecution() {
         if (!_photonView) return;
         if (!_photonView.IsMine || !_controllable) return;
 
         Move();
     }
 
-    private void SaveState()
-    {
+    private void SaveState() {
         _currentTimeToSaveState -= Time.deltaTime;
         if (_currentTimeToSaveState >= 0) return;
 
         _currentTimeToSaveState += TimeToSaveState;
-        Save(new Tuple<Vector3, Quaternion>(transform.position, transform.rotation));
+        Save(
+            new Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>(
+                transform.position,
+                transform.rotation,
+                _rigidbody.velocity,
+                _rigidbody.angularVelocity,
+                _isAccelerating,
+                _momentSpeed
+            )
+        );
     }
 
-    public override void Move()
-    {
-        Grabity();
+    public override void Move() {
+        Gravity();
         MoveForward(Controller.Instance.ForwardValue);
         MoveVertical(Controller.Instance.VerticalValue);
         MoveHorizontal(Controller.Instance.HorizontalValue);
         MoveRotation(Controller.Instance.RotationValue);
         SaveState();
 
-        if (_mommentSpeed > 35)
-        {
+        if (_momentSpeed > 35) {
             if (!_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
         }
-        else
-        {
-            if (_cameraControl.zollyView) _cameraControl.SetZollyFX(true);
-        }
-    }
-    private void Grabity()
-    {
-        if (!_terrainChecker.isTerrein)
-        {
-            var factor = Vector3.up * (9.8f * _rigidbody.mass * _timeGrabity) / 2000;
-            _rigidbody.MovePosition(transform.position - factor * Time.deltaTime);
-            TimeGrabity();
-        }
-        else
-        {
-            TimeGrabity();
+        else {
+            if (_cameraControl.zollyView) _cameraControl.SetZollyFX(false);
         }
     }
 
-    private void TimeGrabity()
-    {
-        if (!_isAccelerating && _mommentSpeed < 10)
-        {
-            _timeGrabity = _timeGrabity < 2 ? _timeGrabity + Time.deltaTime / 2 : 2;
-            //_timeGrabity += Time.deltaTime;
+    private void Gravity() {
+        if (_terrainChecker.isTerrein) {
+            TimeGravity();
+            return;
         }
-        else
-        {
-            _timeGrabity = 0;
-        }
+
+        var factor = Vector3.up * (9.8f * _rigidbody.mass * _timeGravity) / 2000;
+        _rigidbody.MovePosition(transform.position - factor * Time.deltaTime);
+        TimeGravity();
     }
 
-    private void MoveForward(float input)
-    {
+    private void TimeGravity() {
+        _timeGravity = !_isAccelerating && _momentSpeed < 10
+            ? _timeGravity < 2 ? _timeGravity + Time.deltaTime / 2 : 2
+            : 0;
+    }
+
+    private void MoveForward(float input) {
         var toMove = _currentMove.MoveForward(input);
 
-        _mommentSpeed = toMove;
+        _momentSpeed = toMove;
         _rigidbody.velocity = transform.forward * toMove;
     }
 
-    private void MoveHorizontal(float input)
-    {
+    private void MoveHorizontal(float input) {
         _animator.SetFloat(AnimatorHorizontalMove, input);
         var toMove = _currentMove.MoveHorizontal(input);
 
-        if (input != 0)
-        {
+        if (input != 0) {
             _animator.SetBool(AnimatorIdleHorizontalMove, false);
             var eulerAngleVelocity = transform.rotation.eulerAngles + Vector3.up * toMove;
             var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
             _rigidbody.MoveRotation(deltaRotation);
         }
-        else
-        {
+        else {
             _animator.SetBool(AnimatorIdleHorizontalMove, true);
         }
     }
 
-    private void MoveVertical(float input)
-    {
+    private void MoveVertical(float input) {
         _animator.SetFloat(AnimatorVerticalMove, input);
         var toMove = _currentMove.MoveVertical(input);
-        if (input != 0)
-        {
+        if (input != 0) {
             _animator.SetBool(AnimatorIdleVerticalMove, false);
 
             /*rotation object*/
@@ -162,37 +156,30 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
             var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
             _rigidbody.MoveRotation(deltaRotation);
         }
-        else
-        {
+        else {
             _animator.SetBool(AnimatorIdleVerticalMove, true);
         }
     }
 
-    private void MoveRotation(float input)
-    {
+    private void MoveRotation(float input) {
         //_animator.SetFloat(AnimatorVerticalMove, input);
         var toMove = _currentMove.MoveRotation(input);
-        if (input != 0)
-        {
+        if (input != 0) {
             //_animator.SetBool(AnimatorIdleVerticalMove, false);
             var eulerAngleVelocity = transform.rotation.eulerAngles + Vector3.forward * toMove;
             var deltaRotation = Quaternion.Euler(eulerAngleVelocity);
             _rigidbody.MoveRotation(deltaRotation);
         }
-        else
-        {
+        else {
             //_animator.SetBool(AnimatorIdleVerticalMove, true);
         }
     }
 
-    private void OnCollisionEnter(Collision c)
-    {
+    private void OnCollisionEnter(Collision c) {
         var layer = c.gameObject.layer;
-        if (layer == Layers.TERRAIN_NUM_LAYER || layer == Layers.WALLS_NUM_LAYER)
-        {
+        if (layer == Layers.TERRAIN_NUM_LAYER || layer == Layers.WALLS_NUM_LAYER) {
             var force = Vector3.Magnitude(c.impulse); //Force crash
-            if (force > UserGame.PLAYER_FORCE_TO_EXPLOTION)
-            {
+            if (force > UserGame.PLAYER_FORCE_TO_EXPLOTION) {
                 _photonView.RPC("DestroyAirplane", RpcTarget.AllViaServer);
             }
         }
@@ -200,15 +187,13 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
 
     #region MEMENTO
 
-    public void Save(Tuple<Vector3, Quaternion> state)
-    {
+    public void Save(Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float> state) {
         originator.Set(state);
         caretaker.Add(originator.StoreInMemento());
         _currentArticle = caretaker.Count;
     }
 
-    public Tuple<Vector3, Quaternion> UnDo()
-    {
+    public Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float> UnDo() {
         if (_currentArticle > 0) _currentArticle -= 1;
 
         var prev = caretaker.Get(_currentArticle);
@@ -216,8 +201,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         return prevArticle;
     }
 
-    public Tuple<Vector3, Quaternion> ReDo()
-    {
+    public Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float> ReDo() {
         if (_currentArticle < caretaker.Count) _currentArticle += 1;
 
         var next = caretaker.Get(_currentArticle);
@@ -225,8 +209,7 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
         return nextArticle;
     }
 
-    public Tuple<Vector3, Quaternion> LastDo()
-    {
+    public Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float> LastDo() {
         var next = caretaker.Get(0);
         var nextArticle = originator.RestoreFromMemento(next);
         return nextArticle;
@@ -237,69 +220,89 @@ public class EntityPlayer : Entity, IApplyMemento<Tuple<Vector3, Quaternion>>
     #region PUN-CALLBACKS
 
     [PunRPC]
-    public void RespawnAirplane()
-    {
-        _cameraControl.target = transform;
-        var savedData = LastDo();
+    public void ReSpawnAirplane() {
         trailControl.SetActive(true);
         model.SetActive(true);
-        foreach (var collider in _colliders)
-        {
+        foreach (var collider in _colliders) {
             collider.enabled = true;
         }
-        _controllable = false;
-        transform.position = savedData.Item1;
-        transform.rotation = savedData.Item2;
+
+        // Is my player ?
+        if (!_photonView.IsMine) return;
+
+        _cameraControl.target = transform;
+        var (
+            position,
+            rotation,
+            rbVelocity,
+            rbAngularVelocity,
+            isAccelerating,
+            momentSpeed
+            ) = LastDo();
+
+        transform.position = position;
+        transform.rotation = rotation;
+        _rigidbody.velocity = rbVelocity;
+        _rigidbody.angularVelocity = rbAngularVelocity;
+        _momentSpeed = momentSpeed;
+        _isAccelerating = isAccelerating;
+
+        _controllable = true;
     }
 
     [PunRPC]
-    public void DestroyAirplane()
-    {
+    public void DestroyAirplane() {
+        model.SetActive(false);
+        trailControl.SetActive(false);
+        PhotonNetwork.Instantiate(PathVFXExplotion, transform.position, transform.rotation);
+        foreach (var collider in _colliders) {
+            collider.enabled = false;
+        }
+
+        // Is my player ?
+        if (!_photonView.IsMine) return;
+
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
         _currentMove.ResetMomments();
-        model.SetActive(false);
         _cameraControl.target = null;
 
-        PhotonNetwork.Instantiate(PathVFXExplotion, transform.position, transform.rotation);
-
-        trailControl.SetActive(false);
-        foreach (var collider in _colliders)
-        {
-            collider.enabled = false;
-        }
         _controllable = false;
 
-        if (_photonView.IsMine)
-        {
-            object lives;
-            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(UserGame.PLAYER_LIVES, out lives))
-            {
-                /*PhotonNetwork.LocalPlayer.SetCustomProperties(
-                    new Hashtable
-                    {
-                        {UserGame.PLAYER_LIVES, ((int) lives <= 1) ? 0 : ((int) lives - 1)}
-                    }
-                );*/
 
-                if (((int) lives) > 1)
-                {
-                    StartCoroutine("WaitForRespawn");
-                }
-                else
-                {
-                    PhotonNetwork.LeaveRoom();
-                    PhotonNetwork.LoadLevel("MenuLobby");
-                }
+        if (!PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(UserGame.PLAYER_LIVES, out var lives)) return;
+        //TODO: Fix lives counter
+        PhotonNetwork.LocalPlayer.SetCustomProperties(
+            new Hashtable {
+                {UserGame.PLAYER_LIVES, ((int) lives <= 1) ? 0 : ((int) lives - 1)}
             }
-        }
-    }
+        );
 
-    private IEnumerator WaitForRespawn()
-    {
+        if ((int) lives > 1) {
+            StartCoroutine("WaitForSpawn");
+            return;
+        }
+        
+        OnEventDead();
+    }
+    
+    private IEnumerator WaitForSpawn(){ 
         yield return new WaitForSeconds(UserGame.PLAYER_RESPAWN_TIME);
 
-        _photonView.RPC("RespawnAirplane", RpcTarget.AllViaServer);
+        _photonView.RPC("ReSpawnAirplane", RpcTarget.AllViaServer);
     }
+
     #endregion PUN-CALLBACKS
+
+    #region OBSERVABLE-EVENT-DIED
+
+    public void SubscribeEventDead(IObserverEventDead observer) {
+        OnEventDead += observer.EventDead;
+    }
+
+    public void UnSubscribeEventDead(IObserverEventDead observer) {
+        OnEventDead -= observer.EventDead;
+    }
+
+    #endregion OBSERVABLE-EVENT-DIED
 }

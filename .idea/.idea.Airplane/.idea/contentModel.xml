@@ -480,8 +480,12 @@
               </e>
               <e p="Interfaces" t="Include">
                 <e p="IApplyMemento.cs" t="Include" />
-                <e p="IObservableTimer.cs" t="Include" />
-                <e p="IObserverTimer.cs" t="Include" />
+                <e p="IObservableEventDead.cs" t="Include" />
+                <e p="IObservableEventDefeated.cs" t="Include" />
+                <e p="IObservableEventWinner.cs" t="Include" />
+                <e p="IObserverEventDead.cs" t="Include" />
+                <e p="IObserverEventDefeated.cs" t="Include" />
+                <e p="IObserverEventWinner.cs" t="Include" />
               </e>
               <e p="Level" t="Include">
                 <e p="Platform.cs" t="Include" />
@@ -496,11 +500,6 @@
                 <e p="ManagerUpdate.cs" t="Include" />
               </e>
               <e p="RotationObject.cs" t="Include" />
-              <e p="Timers" t="Include">
-                <e p="CountdownTimer.cs" t="Include" />
-                <e p="RespawnTimer.cs" t="Include" />
-                <e p="Timer.cs" t="Include" />
-              </e>
               <e p="UI" t="Include">
                 <e p="UserConnectionStatus.cs" t="Include" />
                 <e p="UserLobbyPanels.cs" t="Include" />

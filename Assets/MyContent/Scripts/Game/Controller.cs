@@ -37,6 +37,7 @@ public class Controller : MonoBehaviour
 
     void Execute()
     {
+        //TODO: Chance forward value for a toggle input
         ForwardValue = Input.GetKey(KeyCode.Space) ? 1 : 0;
         HorizontalValue = Input.GetAxisRaw(InputNameHorizontal);
         VerticalValue = Input.GetAxisRaw(InputNameVertical);

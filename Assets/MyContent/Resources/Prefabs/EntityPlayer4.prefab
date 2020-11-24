@@ -178,15 +178,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665116735916085258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 30.182978, z: 23.404259}
-  m_LocalScale: {x: 21.276598, y: 21.276598, z: 21.276598}
+  m_LocalPosition: {x: 0, y: 0, z: 1.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1915378515034196410}
   - {fileID: 8046864771346738969}
   - {fileID: 1461801140586287260}
   - {fileID: 5548917608715698127}
-  m_Father: {fileID: 3411135042987176162}
-  m_RootOrder: 0
+  m_Father: {fileID: 3343933087524486618}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3343933087524486619
 GameObject:
@@ -227,6 +227,7 @@ Transform:
   m_Children:
   - {fileID: 3540235638245414011}
   - {fileID: 8160726325129793313}
+  - {fileID: 6070897677665275559}
   - {fileID: 3411135042987176162}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -370,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trailControl: {fileID: 665116735916085258}
-  model: {fileID: 0}
+  model: {fileID: 3413622604625654448}
 --- !u!95 &7065608614869092384
 Animator:
   serializedVersion: 3
@@ -450,10 +451,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.4185998, z: 0.29}
   m_LocalScale: {x: 0.046999995, y: 0.046999995, z: 0.046999995}
-  m_Children:
-  - {fileID: 6070897677665275559}
+  m_Children: []
   m_Father: {fileID: 3343933087524486618}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3399733444329608148
 MeshFilter:

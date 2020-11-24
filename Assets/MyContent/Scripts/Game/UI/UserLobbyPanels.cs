@@ -381,16 +381,16 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
     #region UI
     public void OnLoginButton()
     {
-        string userID = inputPlayerName.text;
+        var userId = inputPlayerName.text;
 
-        if (!string.IsNullOrEmpty(userID))
+        if (!string.IsNullOrEmpty(userId))
         {
-            PhotonNetwork.LocalPlayer.NickName = userID;
+            PhotonNetwork.LocalPlayer.NickName = userId;
             PhotonNetwork.ConnectUsingSettings();
         }
-
         else
         {
+            // TODO: Show the error in view.
             Debug.LogError("Player Name is invalid.");
         }
     }
@@ -454,13 +454,15 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks
 
     private IEnumerator LoadScene()
     {
+        LoadingPanel.SetActive(true);
         while (PhotonNetwork.LevelLoadingProgress < 0.98f)
         {
             progress.SetProgress(PhotonNetwork.LevelLoadingProgress);
             progress.SetText((PhotonNetwork.LevelLoadingProgress * 100).ToString("F0") + "%"); 
             yield return null;
         }
-        LoadingPanel.SetActive (false);
+        
+        LoadingPanel.SetActive(false);
     }
 
     #endregion UI
