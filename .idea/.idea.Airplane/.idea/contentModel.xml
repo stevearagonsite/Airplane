@@ -442,7 +442,6 @@
             </e>
           </e>
           <e p="Scripts" t="Include">
-            <e p="CameraControl.cs" t="Include" />
             <e p="Editor" t="Include">
               <e p="Abstracts" t="Include">
                 <e p="InspectorEditor.cs" t="Include" />
@@ -458,6 +457,7 @@
               </e>
             </e>
             <e p="Game" t="Include">
+              <e p="CameraControl.cs" t="Include" />
               <e p="Consts.cs" t="Include" />
               <e p="Controller.cs" t="Include" />
               <e p="Entities" t="Include">
@@ -500,6 +500,7 @@
                 <e p="ManagerUpdate.cs" t="Include" />
               </e>
               <e p="RotationObject.cs" t="Include" />
+              <e p="TriggerWinner.cs" t="Include" />
               <e p="UI" t="Include">
                 <e p="UserConnectionStatus.cs" t="Include" />
                 <e p="UserLobbyPanels.cs" t="Include" />
@@ -509,7 +510,6 @@
               </e>
               <e p="Utils.cs" t="Include" />
             </e>
-            <e p="TriggerWinner.cs" t="Include" />
           </e>
         </e>
         <e p="Photon" t="Include">

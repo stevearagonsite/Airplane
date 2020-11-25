@@ -1,4 +1,4 @@
 public interface IObservableEventDefeated {
-    void SubscribeEventWinner(IObserverEventDefeated observer);
-    void UnSubscribeEventWinner(IObserverEventDefeated observer);
+    void SubscribeEventDefeated(IObserverEventDefeated observer);
+    void UnSubscribeEventDefeated(IObserverEventDefeated observer);
 }

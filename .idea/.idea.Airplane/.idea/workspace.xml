@@ -20,59 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30a78903-0ed5-4e36-9595-dd89f73cbd1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDead.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventWinner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventWinner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDead.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDefeated.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDefeated.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventWinner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventWinner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/Gray.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/Gray.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/GroundTesting.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/GroundTesting.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Materials/Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/PlayerCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/PlayerCamera.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/WFXMR_Nuke.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/WFXMR_Nuke.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/MenuLobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scenes/MenuLobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Controller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CameraControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/CameraControl.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CameraControl.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableTimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableTimer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverTimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverTimer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers/CountDownTimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers/CountDownTimer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers/RespawnTimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers/RespawnTimer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers/Timer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Timers/Timer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/UI/OutlinedSquaredBox.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/UI/OutlinedSquaredBox.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProBuilderSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProBuilderSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,40 +47,67 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventWinner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Editor/UI/EditorLobbyPanels.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserPlayerListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventWinner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///UserLobbyPanels.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDead.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IApplyMemento.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDead.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserRoomListEntry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerUpdate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEventSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A278EBD4-4AB0-472B-B8E6-38263E06CD61/81/eb5680a2/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDefeated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Utils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A1CE4CA8-4A94-4D8A-A5E2-3AA6FA322F2E/55/e7c277b2/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Controller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/RotationObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Level.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Move/IMoveEntityPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouch/Plugins/Editor/EasyTouchWelcomeScreen.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/CameraControl.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///C# Console" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/PunPlayerScores.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/Enums.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDefeated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Level/WayPointPlatform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/AsteroidsGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CameraControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/PlayerOverviewPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouch/Plugins/Editor/EasyTouchWelcomeScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/Asteroid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/UI/UserConnectionStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entities/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/UI/UserRoomListEntry.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/Utils.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/UI/EditorLobbyPanels.cs" />
@@ -149,13 +139,11 @@
         <option value="$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouch/Plugins/Editor/EasyTouchWelcomeScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Controller.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableDied.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverDied.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverDead.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableDead.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableDefeated.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverDefeated.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableWinner.cs" />
@@ -163,10 +151,14 @@
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverWinner.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDead.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventWinner.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDefeated.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" />
       </list>
     </option>
   </component>
@@ -234,6 +226,7 @@
       <workItem from="1606136546239" duration="4384000" />
       <workItem from="1606143481637" duration="2542000" />
       <workItem from="1606165174731" duration="18427000" />
+      <workItem from="1606252716028" duration="18937000" />
     </task>
     <servers />
   </component>
@@ -242,6 +235,16 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -258,27 +261,35 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1745" y="-7" width="1389" height="685" maximized="true" key="DiffContextDialog" timestamp="1606273031616">
+      <screen x="-1680" y="21" width="1680" height="1010" />
+    </state>
+    <state x="-1745" y="-7" width="1389" height="685" maximized="true" key="DiffContextDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606273031616" />
     <state x="777" y="221" key="RiderGenerateDialog" timestamp="1606191597142">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="221" key="RiderGenerateDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606191597142" />
-    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1606178437476">
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1606275926346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606178437476" />
-    <state x="552" y="119" width="815" height="801" key="find.popup" timestamp="1606185691622">
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606275926346" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606277356493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="119" width="815" height="801" key="find.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606185691622" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606277356493" />
+    <state x="552" y="119" width="815" height="801" key="find.popup" timestamp="1606276587482">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="119" width="815" height="801" key="find.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606276587482" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606177324935">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606177324935" />
-    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup" timestamp="1606191566203">
+    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup" timestamp="1606277340395">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-3169" y="153" width="672" height="678" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@-3600.0.1536.832" timestamp="1606103702061" />
-    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606191566203" />
+    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606277340395" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

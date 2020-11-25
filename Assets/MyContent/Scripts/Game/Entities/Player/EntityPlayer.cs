@@ -5,6 +5,7 @@ using System.Linq;
 using Consts;
 using Memento;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -48,6 +49,15 @@ public class EntityPlayer : Entity, IObservableEventDead,
         get => _controllable;
         set => _controllable = value;
     }
+
+    public bool isMime {
+        get => this._photonView.IsMine;
+    }
+    
+    public Player PhotonPlayer {
+        get => this._photonView.Owner;
+    }
+    
 
     private void Start() {
         _photonView = gameObject.GetComponent<PhotonView>();
