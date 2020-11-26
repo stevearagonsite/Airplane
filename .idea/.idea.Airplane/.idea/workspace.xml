@@ -20,22 +20,113 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30a78903-0ed5-4e36-9595-dd89f73cbd1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/PlayerCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/PlayerCamera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Textures/Trails.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_1.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_1.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_2.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_2.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_3.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_3.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_4.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_4.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/MenuLobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scenes/MenuLobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CameraControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/CameraControl.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CameraControl.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level/OcclusionCullingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level/OcclusionCullingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_1Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_1Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_2Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_2Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_3Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_3Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_4Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_4Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_1_prefa.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_1_prefa.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_2_prefa.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_2_prefa.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_3_prefa.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_3_prefa.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_4_prefa.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_4_prefa.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Simple_Cartoon_Plane_demoscene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Simple_Cartoon_Plane_demoscene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProBuilderSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProBuilderSettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,71 +139,60 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventWinner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Editor/UI/EditorLobbyPanels.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserPlayerListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventWinner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///UserLobbyPanels.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDead.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/24/81860cc7/Type.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IApplyMemento.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDead.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserRoomListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerUpdate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEventSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A278EBD4-4AB0-472B-B8E6-38263E06CD61/b7/1bf041d3/Resources.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A278EBD4-4AB0-472B-B8E6-38263E06CD61/81/eb5680a2/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Utils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A1CE4CA8-4A94-4D8A-A5E2-3AA6FA322F2E/55/e7c277b2/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Generics/CustomObjects.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Controller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/RotationObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Level.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Generics/LINQExtension.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Move/IMoveEntityPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/PunPlayerScores.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/Enums.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///TriggerWinner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverEventDefeated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Level/WayPointPlatform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/AsteroidsGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A278EBD4-4AB0-472B-B8E6-38263E06CD61/de/40369e6a/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CameraControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/PlayerOverviewPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouch/Plugins/Editor/EasyTouchWelcomeScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/Asteroid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CollisionChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///ManagerGame.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/UI/UserRoomListEntry.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Utils.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/UI/EditorLobbyPanels.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/Generics/GenericsEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/Abstracts/InspectorEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/Generics/CustomObjects.cs" />
         <option value="$PROJECT_DIR$/Assets/Downloads/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/AsteroidsGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/UI/UserPlayerListEntry.cs" />
@@ -137,9 +217,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game/Entities/Player/Move/MoveRigibody.cs" />
         <option value="$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouch/Plugins/Editor/EasyTouchWelcomeScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Controller.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableDied.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverDied.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObserverDead.cs" />
@@ -155,10 +233,17 @@
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Interfaces/IObservableEventDefeated.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/TriggerWinner.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerPositions.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/TriggerWinner.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" />
+        <option value="$PROJECT_DIR$/Assets/CollitionChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" />
+        <option value="$PROJECT_DIR$/Assets/CollisionChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" />
       </list>
     </option>
   </component>
@@ -227,6 +312,8 @@
       <workItem from="1606143481637" duration="2542000" />
       <workItem from="1606165174731" duration="18427000" />
       <workItem from="1606252716028" duration="18937000" />
+      <workItem from="1606338520484" duration="12430000" />
+      <workItem from="1606360284736" duration="8191000" />
     </task>
     <servers />
   </component>
@@ -269,10 +356,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="221" key="RiderGenerateDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606191597142" />
-    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1606275926346">
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1606360901099">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606275926346" />
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606360901099" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606277356493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -285,11 +372,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606177324935" />
-    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup" timestamp="1606277340395">
+    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup" timestamp="1606366671465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-3169" y="153" width="672" height="678" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@-3600.0.1536.832" timestamp="1606103702061" />
-    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606277340395" />
+    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606366671465" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

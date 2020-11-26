@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Consts;
 using Photon.Pun;
@@ -7,12 +6,9 @@ using Photon.Pun.Demo.Asteroids;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-
 using Hashtable = ExitGames.Client.Photon.Hashtable;
-using Random = UnityEngine.Random;
 
 public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObserverEventDefeated, IObserverEventWinner {
     [FormerlySerializedAs("CanvasUI")] 
@@ -20,6 +16,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
     public Text text;
     public TriggerWinner triggerWinner;
     private Dictionary<int, GameObject> playerListEntries = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> playerListCharactersModel = new Dictionary<int, GameObject>();
 
     private void Awake() {
         Application.targetFrameRate = 60;
@@ -91,6 +88,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         foreach (var entity in entities) {
             var entry = entity.gameObject;
             playerListEntries.Add(entity.PhotonPlayer.ActorNumber, entry);
+            // playerListCharactersModel.Add(entity.PhotonPlayer.ActorNumber, entity.Character.gameObject);
         }
     }
 
@@ -116,14 +114,26 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         var index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         var initialPosition = ManagerPositions.Instance.GetPosition(index);
         var rotation = Quaternion.Euler(ManagerPositions.Instance.transform.forward);
-        int randomAirplaneModel = Random.Range(1, 5);
+        var randomAirplaneModel = Random.Range(1, 5);
+        var randomCharacterModel = Random.Range(1, 6);
 
-        return PhotonNetwork.Instantiate(
+        var entityPlayer = PhotonNetwork.Instantiate(
             $"Prefabs/EntityPlayer{randomAirplaneModel.ToString()}",
             initialPosition,
             rotation,
             0
         ).GetComponent<EntityPlayer>();
+        
+        var characterModel = PhotonNetwork.Instantiate(
+            $"Characters/Character0{randomCharacterModel.ToString()}",
+            initialPosition,
+            rotation,
+            0
+        ).GetComponent<CharacterModel>();
+        entityPlayer.Character = characterModel;
+        characterModel.Entity = entityPlayer;
+        
+        return entityPlayer;
     }
 
 

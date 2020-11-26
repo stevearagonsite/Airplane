@@ -8,7 +8,10 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(PhotonNetwork))]
+[RequireComponent(typeof(Rigidbody))]
 public class EntityPlayer : Entity, IObservableEventDead,
     IApplyMemento<Tuple<Vector3, Quaternion, Vector3, Vector3, bool, float>> {
     
@@ -19,8 +22,12 @@ public class EntityPlayer : Entity, IObservableEventDead,
     private const string PathVFXExplotion = "Prefabs/VFXExplotion";
     private const string MoveBehaviorPlayerNormal = "normal";
     
-    [Header("Player parameters")] public GameObject trailControl;
+    [Header("Player parameters")] 
+    public GameObject trailControl;
+    public Transform characterPosition;
     public GameObject model;
+    
+    public CharacterModel Character { get; set; }
 
     private bool _controllable;
     private float _timeGravity;
@@ -31,6 +38,7 @@ public class EntityPlayer : Entity, IObservableEventDead,
     private List<Collider> _colliders;
     private Animator _animator;
     private TerrainChecker _terrainChecker;
+    private CollisionChecker _collisionChecker;
     private CameraControl _cameraControl;
     private event Action OnEventDead = delegate {};
 
@@ -57,7 +65,6 @@ public class EntityPlayer : Entity, IObservableEventDead,
     public Player PhotonPlayer {
         get => this._photonView.Owner;
     }
-    
 
     private void Start() {
         _photonView = gameObject.GetComponent<PhotonView>();
@@ -69,6 +76,7 @@ public class EntityPlayer : Entity, IObservableEventDead,
         _moveBehaviors.Add(MoveBehaviorPlayerNormal, new MoveEntityPlayerNormal());
         _currentMove = _moveBehaviors[MoveBehaviorPlayerNormal];
         _terrainChecker = GetComponentInChildren<TerrainChecker>();
+        _collisionChecker = GetComponentInChildren<CollisionChecker>();
         _cameraControl = FindObjectOfType<CameraControl>();
         _cameraControl.target = GetComponentInChildren<LookAt>().transform;
     }
@@ -117,26 +125,43 @@ public class EntityPlayer : Entity, IObservableEventDead,
     }
 
     private void Gravity() {
-        if (_terrainChecker.isTerrein) {
-            TimeGravity();
+        if (_terrainChecker.isTerrain) {
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX;
+            ForceGravity();
+            Debug.Log("On the floor");
             return;
         }
 
+        Debug.Log("On the air");
+        ForceGravity();
+        _rigidbody.constraints = RigidbodyConstraints.None;
         var factor = Vector3.up * (9.8f * _rigidbody.mass * _timeGravity) / 2000;
         _rigidbody.MovePosition(transform.position - factor * Time.deltaTime);
-        TimeGravity();
     }
 
-    private void TimeGravity() {
-        _timeGravity = !_isAccelerating && _momentSpeed < 10
-            ? _timeGravity < 2 ? _timeGravity + Time.deltaTime / 2 : 2
-            : 0;
+    private void ForceGravity() {
+        if ( !_isAccelerating && _momentSpeed < 3) {
+            _timeGravity = _timeGravity < 2 ? _timeGravity + Time.deltaTime : 2;
+            return;
+        }
+
+        _timeGravity = 0;
     }
 
     private void MoveForward(float input) {
-        var toMove = _currentMove.MoveForward(input);
+        if (_collisionChecker.IsColliding) {
+            return;
+        }
 
+        var toMove = _currentMove.MoveForward(input);
         _momentSpeed = toMove;
+
+        
+        if (_terrainChecker.isTerrain) {
+            _rigidbody.velocity = (transform.forward * toMove) + (transform.up * toMove/2);
+            return;
+        }
+        
         _rigidbody.velocity = transform.forward * toMove;
     }
 
@@ -232,6 +257,7 @@ public class EntityPlayer : Entity, IObservableEventDead,
     [PunRPC]
     public void ReSpawnAirplane() {
         trailControl.SetActive(true);
+        Character.gameObject.SetActive(true);
         model.SetActive(true);
         foreach (var collider in _colliders) {
             collider.enabled = true;
@@ -265,6 +291,7 @@ public class EntityPlayer : Entity, IObservableEventDead,
         model.SetActive(false);
         trailControl.SetActive(false);
         PhotonNetwork.Instantiate(PathVFXExplotion, transform.position, transform.rotation);
+        Character.gameObject.SetActive(false);
         foreach (var collider in _colliders) {
             collider.enabled = false;
         }

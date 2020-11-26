@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
@@ -18,6 +19,11 @@ public abstract class Entity : MonoBehaviour
     {
         ManagerUpdate.Instance.Execute += Execution;
         ManagerUpdate.Instance.ExecuteFixed += FixedExecution;
+    }
+
+    private void OnDestroy() {
+        ManagerUpdate.Instance.Execute -= Execution;
+        ManagerUpdate.Instance.ExecuteFixed -= FixedExecution;
     }
 
     public abstract void Move();

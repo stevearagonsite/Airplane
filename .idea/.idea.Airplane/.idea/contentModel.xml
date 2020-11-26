@@ -8,6 +8,12 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="AurynSky" t="Include">
+          <e p="Rockets Missiles and Bombs" t="Include">
+            <e p="READ ME.txt" t="Include" />
+          </e>
+        </e>
+        <e p="CollisionChecker.cs" t="Include" />
         <e p="Dreamteck" t="Include">
           <e p="Splines" t="Include">
             <e p="Components" t="Include">
@@ -458,6 +464,7 @@
             </e>
             <e p="Game" t="Include">
               <e p="CameraControl.cs" t="Include" />
+              <e p="CharacterModel.cs" t="Include" />
               <e p="Consts.cs" t="Include" />
               <e p="Controller.cs" t="Include" />
               <e p="Entities" t="Include">
@@ -494,6 +501,7 @@
               </e>
               <e p="LookAt.cs" t="Include" />
               <e p="Managers" t="Include">
+                <e p="ManagerEntityPlayer.cs" t="Include" />
                 <e p="ManagerEventSystem.cs" t="Include" />
                 <e p="ManagerGame.cs" t="Include" />
                 <e p="ManagerPositions.cs" t="Include" />
