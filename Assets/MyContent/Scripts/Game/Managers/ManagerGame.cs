@@ -114,7 +114,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         var index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         var initialPosition = ManagerPositions.Instance.GetPosition(index);
         var rotation = Quaternion.Euler(ManagerPositions.Instance.transform.forward);
-        var randomAirplaneModel = Random.Range(1, 5);
+        var randomAirplaneModel = Random.Range(1, 9);
         var randomCharacterModel = Random.Range(1, 6);
 
         var entityPlayer = PhotonNetwork.Instantiate(
@@ -146,9 +146,9 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
 
         playerListEntries.Clear();
         playerListEntries = null;
-        
-        PhotonNetwork.LoadLevel("MenuLobby");
+
         base.OnLeftRoom();
+        PhotonNetwork.LoadLevel("MenuLobby");
     }
     
     public override void OnPlayerLeftRoom(Player otherPlayer) {
@@ -162,15 +162,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         Destroy(player.gameObject);
         playerListEntries.Remove(otherPlayer.ActorNumber);
     }
-
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
-    {
-        GameObject entry;
-        if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
-        {
-            entry.GetComponent<Text>().text = string.Format("{0}\nScore: {1}\nLives: {2}", targetPlayer.NickName, targetPlayer.GetScore(), targetPlayer.CustomProperties[AsteroidsGame.PLAYER_LIVES]);
-        }
-    }
+    
     #endregion PUN-CALLBACKS
 
     #region OBSERVER-EVENT-DEAD
@@ -185,8 +177,8 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         text.text = "You are dead";
         
         yield return new WaitForSeconds(3);
+        StopAllCoroutines();
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel("MenuLobby");
     }
 
     #endregion OBSERVER-EVENT-DEAD

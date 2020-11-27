@@ -8,11 +8,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="AurynSky" t="Include">
-          <e p="Rockets Missiles and Bombs" t="Include">
-            <e p="READ ME.txt" t="Include" />
-          </e>
-        </e>
         <e p="CollisionChecker.cs" t="Include" />
         <e p="Dreamteck" t="Include">
           <e p="Splines" t="Include">

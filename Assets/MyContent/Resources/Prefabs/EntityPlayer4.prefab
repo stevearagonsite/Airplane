@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2100873379256979474, guid: a5d0d736f240d2549bc8a9f8f675278e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c594a7ae82cd9654b92ad6768d84ca50, type: 2}
     - target: {fileID: 3343933087524486618, guid: a5d0d736f240d2549bc8a9f8f675278e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -68,6 +73,11 @@ PrefabInstance:
       value: EntityPlayer4
       objectReference: {fileID: 0}
     - target: {fileID: 3389587767847120932, guid: a5d0d736f240d2549bc8a9f8f675278e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c594a7ae82cd9654b92ad6768d84ca50, type: 2}
+    - target: {fileID: 5284102191983205045, guid: a5d0d736f240d2549bc8a9f8f675278e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

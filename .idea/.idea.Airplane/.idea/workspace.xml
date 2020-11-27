@@ -20,26 +20,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30a78903-0ed5-4e36-9595-dd89f73cbd1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Small airplane2.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DownVerticalMove.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DownVerticalMove.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/EntityPlayer.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/EntityPlayer.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleHorizontalMove.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleHorizontalMove.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleVerticalMove.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleVerticalMove.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/LeftHorizontalMove.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/LeftHorizontalMove.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/RightHorizontalMove.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/RightHorizontalMove.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/UpVerticalMove.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/UpVerticalMove.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AurynSky.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane01/Animations.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane01/Animations.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/DownVerticalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/DownVerticalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/EntityPlayer.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/EntityPlayer.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/IdleHorizontalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/IdleHorizontalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/IdleVerticalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/IdleVerticalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/LeftHorizontalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/LeftHorizontalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/RightHorizontalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/RightHorizontalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/UpVerticalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Animations/UpVerticalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-1/Body.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-1/Body.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-1/Metal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-1/Metal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-1/Windows.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-1/Windows.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Body.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Body.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Metal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Metal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Wheels.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Wheels.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Windows.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-2/Windows.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Body.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Body.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Metal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Metal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Wheels.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Wheels.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Windows.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-3/Windows.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Body.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Body.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Body.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Body.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Metal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Metal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Wheels.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Wheels.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Windows.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Airplanes/Airplane02/Option-4/Windows.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character03.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character04.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character04.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character05.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Characters/Character05.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer6.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer7.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer7.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer8.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer8.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/Original01EntityPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/Original01EntityPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/Original02EntityPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/Original02EntityPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +146,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CollisionChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A278EBD4-4AB0-472B-B8E6-38263E06CD61/ce/b0f33d1d/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -151,12 +195,12 @@
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/CollitionChecker.cs" />
-        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" />
         <option value="$PROJECT_DIR$/Assets/CollisionChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" />
         <option value="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" />
       </list>
     </option>
@@ -228,6 +272,7 @@
       <workItem from="1606252716028" duration="18937000" />
       <workItem from="1606338520484" duration="12430000" />
       <workItem from="1606360284736" duration="8191000" />
+      <workItem from="1606451264479" duration="894000" />
     </task>
     <servers />
   </component>
@@ -286,11 +331,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606177324935" />
-    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup" timestamp="1606366671465">
+    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup" timestamp="1606451854915">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1208" y="206" width="735" height="824" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@-1680.21.1680.1010" timestamp="1606448312570" />
     <state x="-3169" y="153" width="672" height="678" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@-3600.0.1536.832" timestamp="1606103702061" />
-    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606366671465" />
+    <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/-3600.0.1536.832/0.0.1920.1040/-1680.21.1680.1010@0.0.1920.1040" timestamp="1606451854915" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
