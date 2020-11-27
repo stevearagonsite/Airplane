@@ -20,113 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30a78903-0ed5-4e36-9595-dd89f73cbd1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/CharacterModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerEntityPlayer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Airplane/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Art/Textures/Trails.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_1.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_1.obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_2.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_2.obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_3.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_3.obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_4.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Meshes/plane_4.obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer1.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer2.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer3.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer4.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level/OcclusionCullingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level/OcclusionCullingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Consts.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/EntityPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player/TerrainChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Managers/ManagerGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyContent/Scripts/Game/UI/UserLobbyPanels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_1Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_1Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_2Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_2Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_3Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_3Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_4Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Materials/plane_4Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_1_prefa.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_1_prefa.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_2_prefa.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_2_prefa.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_3_prefa.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_3_prefa.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_4_prefa.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Prefabs/plane_4_prefa.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Simple_Cartoon_Plane_demoscene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Simple_Cartoon_Plane_demoscene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_1_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_3_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_2048/simple_cartoon_plane_4_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_1_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_3_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Simple Cartoon Planes/Textures/textures_4096/simple_cartoon_plane_4_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProBuilderSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProBuilderSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/DownVerticalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/DownVerticalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/EntityPlayer.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/EntityPlayer.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleHorizontalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleHorizontalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleVerticalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/IdleVerticalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/LeftHorizontalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/LeftHorizontalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RightHorizontalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RightHorizontalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/UpVerticalMove.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/UpVerticalMove.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AurynSky.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Resources/Prefabs/EntityPlayer.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyContent/Scenes/Level.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,6 +82,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Player.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/PunPlayerScores.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6A8DC567-3A4E-4788-B5AC-1561569747AB/8a/c07e0115/Input.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyContent/Scripts/Game/Entities/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/Enums.cs" root0="FORCE_HIGHLIGHTING" />
