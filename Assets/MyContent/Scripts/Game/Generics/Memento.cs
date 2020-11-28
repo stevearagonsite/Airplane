@@ -58,20 +58,17 @@ namespace Memento
 
         public void Set(T article)
         {
-            //Debug.Log("From Originator: Current Version of article is: [\"" + article + "\"]");
             this.article = article;
         }
 
         public Memento<T> StoreInMemento()
         {
-            //Debug.Log("From Originator: Saving in Memento: [\"" + article + "\"]");
             return new Memento<T>(article);
         }
 
         public T RestoreFromMemento(Memento<T> memento)
         {
             article = memento.article;
-            //Debug.Log("From Originator: Previous Article saved in Memento: [\"" + article + "\"]");
             return article;
         }
     }

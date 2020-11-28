@@ -31,6 +31,7 @@ public class UserProgress : MonoBehaviour
     private void Start()
     {
         _maxValueProgress = Math.Abs(progress.rectTransform.offsetMax.x);
+        progress.fillAmount = 0;
     }
 
     /// <summary>
@@ -49,6 +50,7 @@ public class UserProgress : MonoBehaviour
     {
         if (value < 0) return;
         _currentValueProgress = value;
+        progress.fillAmount = _currentValueProgress;
         progress.rectTransform.SetRight(_maxValueProgress * _currentValueProgress);
     }
 }

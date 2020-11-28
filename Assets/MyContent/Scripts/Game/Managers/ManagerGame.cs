@@ -11,13 +11,15 @@ using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObserverEventDefeated, IObserverEventWinner {
-    [FormerlySerializedAs("CanvasUI")] 
-    public GameObject canvasUI;
+    [FormerlySerializedAs("CanvasUI")] public GameObject canvasUI;
+    public GameObject winnerPanel;
+    public GameObject defeatedPanel;
+    public GameObject deadPanel;
     public Text text;
     public TriggerWinner triggerWinner;
     private Dictionary<int, GameObject> playerListEntries = new Dictionary<int, GameObject>();
     private Dictionary<int, GameObject> playerListCharactersModel = new Dictionary<int, GameObject>();
-
+    private bool IsActiveEndPanel => winnerPanel.activeSelf || defeatedPanel.activeSelf || deadPanel.activeSelf;
     private void Awake() {
         Application.targetFrameRate = 60;
         PhotonNetwork.SendRate = 60;
@@ -41,20 +43,20 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
 
     private void ExitOfRace() {
         StopAllCoroutines();
-        
+
         // Reset player
         Hashtable initialProps = new Hashtable() {
-            { UserGame.PLAYER_READY, false } ,
-            { UserGame.PLAYER_LIVES, UserGame.PLAYER_MAX_LIVES }
+            {UserGame.PLAYER_READY, false},
+            {UserGame.PLAYER_LIVES, UserGame.PLAYER_MAX_LIVES}
         };
-        
+
         PhotonNetwork.LocalPlayer.SetCustomProperties(initialProps);
         PhotonNetwork.LocalPlayer.SetScore(0);
-        
+
         // Return to main menu
         PhotonNetwork.LeaveRoom();
     }
-    
+
     private IEnumerator InitialSequenceForStart() {
         canvasUI.SetActive(true);
         var player = InitialSpawnPlayer();
@@ -75,11 +77,11 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
             text.text = $"{countDown}";
             yield return new WaitForSeconds(1);
         }
-        
+
         text.text = "Ready Go!!";
         player.Controllable = true;
         yield return new WaitForSeconds(3);
-        
+
         canvasUI.SetActive(false);
     }
 
@@ -99,7 +101,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
             if (!p.CustomProperties.TryGetValue(UserGame.PLAYER_LOADED_LEVEL, out playerLoadedLevel)) {
                 return false;
             }
-            
+
             if ((bool) playerLoadedLevel) {
                 continue;
             }
@@ -123,7 +125,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
             rotation,
             0
         ).GetComponent<EntityPlayer>();
-        
+
         var characterModel = PhotonNetwork.Instantiate(
             $"Characters/Character0{randomCharacterModel.ToString()}",
             initialPosition,
@@ -132,7 +134,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         ).GetComponent<CharacterModel>();
         entityPlayer.Character = characterModel;
         characterModel.Entity = entityPlayer;
-        
+
         return entityPlayer;
     }
 
@@ -150,23 +152,28 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
         base.OnLeftRoom();
         PhotonNetwork.LoadLevel("MenuLobby");
     }
-    
+
     public override void OnPlayerLeftRoom(Player otherPlayer) {
         if (playerListEntries == null) {
             playerListEntries = new Dictionary<int, GameObject>();
         }
 
         // TryGetValue 
-        var playerExist = playerListEntries.TryGetValue(otherPlayer.ActorNumber,out var player);
+        var playerExist = playerListEntries.TryGetValue(otherPlayer.ActorNumber, out var player);
         if (!playerExist) return;
         Destroy(player.gameObject);
         playerListEntries.Remove(otherPlayer.ActorNumber);
     }
-    
+
     #endregion PUN-CALLBACKS
 
     #region OBSERVER-EVENT-DEAD
+
     public void EventDead() {
+        if (IsActiveEndPanel) {
+            return;
+        }
+
         //TODO: Assign the camera to another player
         //TODO: Listen the input for get out of race 
         StartCoroutine("GamerOverByDead");
@@ -175,7 +182,7 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
     private IEnumerator GamerOverByDead() {
         canvasUI.SetActive(true);
         text.text = "You are dead";
-        
+
         yield return new WaitForSeconds(3);
         StopAllCoroutines();
         PhotonNetwork.LeaveRoom();
@@ -184,31 +191,39 @@ public class ManagerGame : MonoBehaviourPunCallbacks, IObserverEventDead, IObser
     #endregion OBSERVER-EVENT-DEAD
 
     #region OBSERVER-EVENT-DEFEATED
+
     public void EventDefeated() {
-        canvasUI.SetActive(true);
-        text.text = "You has been defeated";
+        if (IsActiveEndPanel) {
+            return;
+        }
+
+        defeatedPanel.SetActive(true);
         StartCoroutine("TimeToExit");
     }
 
     #endregion OBSERVER-EVENT-DEFEATED
-    
+
     #region OBSERVER-EVENT-WINNER
+
     public void EventWinner() {
-        canvasUI.SetActive(true);
-        text.text = "You have won";
+        if (IsActiveEndPanel) {
+            return;
+        }
+
+        winnerPanel.SetActive(true);
         StartCoroutine("TimeToExit");
     }
-    
+
     #endregion OBSERVER-EVENT-WINNER
-    
+
     private IEnumerator TimeToExit() {
         var timer = 3.0f;
-        while (timer > 0.0f)
-        {
+        while (timer > 0.0f) {
             yield return new WaitForEndOfFrame();
 
             timer -= Time.deltaTime;
         }
+
         ExitOfRace();
     }
 }

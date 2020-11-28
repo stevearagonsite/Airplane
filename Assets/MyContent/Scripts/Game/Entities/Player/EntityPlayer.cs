@@ -128,11 +128,9 @@ public class EntityPlayer : Entity, IObservableEventDead,
         if (_terrainChecker.isTerrain) {
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX;
             ForceGravity();
-            Debug.Log("On the floor");
             return;
         }
 
-        Debug.Log("On the air");
         ForceGravity();
         _rigidbody.constraints = RigidbodyConstraints.None;
         var factor = Vector3.up * (9.8f * _rigidbody.mass * _timeGravity) / 2000;

@@ -8,7 +8,7 @@ namespace Consts
 {
     public static class UserGame
     {
-        public const int PLAYER_MAX_LIVES = 2;
+        public const int PLAYER_MAX_LIVES = 4;
 
         public const string PLAYER_LIVES = "PlayerLives";
         public const string PLAYER_ENTRY = "PlayerEntry";

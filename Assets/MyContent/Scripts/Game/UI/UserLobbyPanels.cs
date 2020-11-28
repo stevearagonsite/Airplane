@@ -148,7 +148,7 @@ public class UserLobbyPanels : MonoBehaviourPunCallbacks {
     #region INSIDE-ROOM
 
     private bool CheckPlayersReady() {
-        if (!PhotonNetwork.IsMasterClient /*|| PhotonNetwork.PlayerList.Length < 2*/) return false;
+        if (!PhotonNetwork.IsMasterClient || PhotonNetwork.PlayerList.Length < 2) return false;
 
         foreach (Player p in PhotonNetwork.PlayerList) {
             object isPlayerReady;
